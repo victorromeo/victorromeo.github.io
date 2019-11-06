@@ -44,9 +44,10 @@ $parenthesis-token-color: gray;
 $keyword-token-color: blue;
 $string-token-color: green;
 $named-token-color: white;
+$highlight-color: LightGoldenrodYellow;
 
 pre code span.highlight {
-  background-color:
+  background-color: $highlight-color;
 }
 
 pre code span.o {
