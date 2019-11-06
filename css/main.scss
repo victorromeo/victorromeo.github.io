@@ -78,7 +78,7 @@ pre code span.p, span.br0, span.sy0 {
   color: $parenthesis-token-color;
 }
 
-div[class*="language-"] {
+div[class*="language-"] div.highlight pre.highlight {
   box-sizing: border-box;
   border-radius: 5px;
   border: 1px solid #e0e0e0;
