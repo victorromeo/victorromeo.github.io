@@ -4,6 +4,13 @@
 $header-font-size: 40px;
 $body-font-size: 13px;
 
+$comparator-token-color: silver
+$parenthesis-token-color: gray;
+$keyword-token-color: blue;
+$string-token-color: green;
+$named-token-color: white;
+$highlight-color: LightGoldenrodYellow;
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif !important;
 }
@@ -39,12 +46,7 @@ body {
 
 // Bootstrap Syntax Highlighting
 
-$comparator-token-color: silver
-$parenthesis-token-color: gray;
-$keyword-token-color: blue;
-$string-token-color: green;
-$named-token-color: white;
-$highlight-color: LightGoldenrodYellow;
+
 
 pre code span.highlight {
   background-color: $highlight-color;
