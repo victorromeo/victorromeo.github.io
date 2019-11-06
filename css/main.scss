@@ -7,7 +7,7 @@ $body-font-size: 13px;
 $comparator-token-color: blue;
 $parenthesis-token-color: gray;
 $keyword-token-color: purple;
-$string-token-color: silver;
+$string-token-color: green;
 $named-token-color: red;
 $highlight-color: LightGoldenrodYellow;
 
@@ -76,4 +76,12 @@ span.kw2 {
 
 pre code span.p, span.br0, span.sy0 {
   color: $parenthesis-token-color;
+}
+
+div[class*="language-"] {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  background: #f9f9f9;
+  padding: 5px;
 }
