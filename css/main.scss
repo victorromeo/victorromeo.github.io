@@ -57,11 +57,11 @@ pre code span.o {
 }
 
 pre code span.s, pre code span.s2 {
-  color: $string;
+  color: $string-token-color;
 }
 
-pre code span.d, pre code span.s2 {
-  color: $string;
+pre code span.d, pre code span.dl {
+  color: lighten($string-token-color, 10%);
 }
 
 pre code span.n, pre code span.nx {
