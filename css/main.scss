@@ -36,3 +36,39 @@ body {
   font-family: 'Questrial', sans-serif !important;
   font-size: $body-font-size;
 }
+
+// Bootstrap Syntax Highlighting
+
+$comparator-token-color: silver
+$parenthesis-token-color: gray;
+$keyword-token-color: blue;
+$string-token-color: green;
+$named-token-color: white;
+
+pre code span.highlight {
+  background-color:
+}
+
+pre code span.o {
+  color: $comparator-token-color;
+}
+
+pre code span.s, pre code span.s2 {
+  color: $string;
+}
+
+pre code span.d, pre code span.s2 {
+  color: $string;
+}
+
+pre code span.n, pre code span.nx {
+  color: lighten($string-token-color);
+}
+
+pre code span.k, pre code span.kd {
+  color: $keyword-token-color
+}
+
+pre code span.p {
+  color: $parenthesis-token-color;
+}
