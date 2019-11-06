@@ -63,7 +63,7 @@ pre code span.d, pre code span.s2 {
 }
 
 pre code span.n, pre code span.nx {
-  color: lighten($string-token-color);
+  color: lighten($string-token-color, 20%);
 }
 
 pre code span.k, pre code span.kd {
