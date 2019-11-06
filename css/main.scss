@@ -4,11 +4,11 @@
 $header-font-size: 40px;
 $body-font-size: 13px;
 
-$comparator-token-color: silver;
+$comparator-token-color: blue;
 $parenthesis-token-color: gray;
-$keyword-token-color: blue;
-$string-token-color: green;
-$named-token-color: white;
+$keyword-token-color: purple;
+$string-token-color: silver;
+$named-token-color: red;
 $highlight-color: LightGoldenrodYellow;
 
 h1, h2, h3, h4, h5, h6 {
@@ -46,32 +46,34 @@ body {
 
 // Bootstrap Syntax Highlighting
 
-
-
 pre code span.highlight {
   background-color: $highlight-color;
+}
+
+span.me0, pre code span.nx, pre code span.n {
+  color: $named-token-color;
 }
 
 pre code span.o {
   color: $comparator-token-color;
 }
 
-pre code span.s, pre code span.s2 {
+pre code span.s, pre code span.s2, span.st0 {
   color: $string-token-color;
 }
 
 pre code span.d, pre code span.dl {
-  color: lighten($string-token-color, 10%);
-}
-
-pre code span.n, pre code span.nx {
   color: lighten($string-token-color, 20%);
 }
 
-pre code span.k, pre code span.kd {
+pre code span.k, pre code span.kd, span.kw1, span.kw2 {
   color: $keyword-token-color;
 }
 
-pre code span.p {
+span.kw2 {
+  font-weight: bold;
+}
+
+pre code span.p, span.br0, span.sy0 {
   color: $parenthesis-token-color;
 }
