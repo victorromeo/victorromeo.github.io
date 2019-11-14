@@ -8,6 +8,7 @@ $comparator-token-color: blue;
 $parenthesis-token-color: gray;
 $keyword-token-color: purple;
 $string-token-color: green;
+$comment-token-color: lightgreen;
 $named-token-color: red;
 $highlight-color: LightGoldenrodYellow;
 
@@ -60,6 +61,10 @@ pre code span.o {
 
 pre code span.s, pre code span.s2, span.st0 {
   color: $string-token-color;
+}
+
+span.c1 {
+  color: $comment-token-color;
 }
 
 pre code span.d, pre code span.dl {
