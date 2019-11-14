@@ -3,7 +3,7 @@ layout: post
 title: "SOLID Design Principles"
 date: 2019-07-31
 ---
-## SOLID Application Practices are well defined principles which increase an object oriented application's flexibility and extensibility.
+**SOLID Application Practices are well defined principles which increase an object oriented application's flexibility and extensibility.**
 
 - [Single Responsibility Principle](#single-responsibility-principle)
 - [Open Closed Principle](#open-closed-principle)
@@ -42,7 +42,9 @@ public class School {
 }
 {% endhighlight %}
 
-Instead, using the Single Responsibility Principle, this would be broken up into several classes which are each responsible for a single small domain.  Let's assume the domain entities are School, Subject and Student which are being divided out.  Also, lets separate the concepts of businss logic from data access logic.
+It's an example of a class which has a complicated goal.  It becomes diffult to adequetely maintain the code, extend and remove features when the purpose is a vast as this example.  Imagine adding the function to manage Rooms within the school to this code.  Does it seem easy or does it even belong in this class?  Understanding the answer to these questions requires a significant understanding of the data, logic and data persistence aspects of the class.
+
+Using the Single Responsibility Principle, this code would be broken up into several classes which are each responsible for a single small component of the whole application.  Let's assume the domain entities are School, Subject and Student which are being divided out.  Also, lets separate the concepts of businss logic from data access logic, and create new classes to store relationships between entities.
 
 {% highlight csharp %}
 
