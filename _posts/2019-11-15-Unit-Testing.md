@@ -48,11 +48,11 @@ In reality testing is typically much more complex than the above contrived examp
 
 ## Who writes Unit Tests
 
-Typically a standard developer is responsible for the creation and maintenance of unit tests.
+Typically a standard developer is responsible for the creation and maintenance of unit tests.  Sometimes teams will have a team who are responsible for the creation of Unit Tests within a development team.  Tead Leaders may create high level unit tests to help guide the team to understand high level concepts.
 
-Sometimes however support technicians will write Unit Tests to validate error detection and resolution found within code.
+Sometimes however support technicians will write Unit Tests to validate reported errors and their resolution.
 
-Test Driven Development (TDD) typically uses Unit Testing to construct the Unit Tests before the functionality is created or modified.  Using this technique, a developer will take the minimal path to ensure that the test case passes, and thereby avoid over engineering the code base.
+Test Driven Development (TDD) typically uses Unit Testing to construct the Unit Tests before the code base functionality is created or modified.  Using this technique, a developer will take the minimal path to ensure that the test case passes, and thereby avoid over engineering the code base.
 
 ## Vocabulary
 
