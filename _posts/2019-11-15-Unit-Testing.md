@@ -68,6 +68,8 @@ Test Driven Development (TDD) typically uses Unit Testing to construct the Unit 
 
 - **Test Report** - A statement which confirms the success or failure of a set of unit tests determined in their latest execution.  The Test Report is an important statement to provide Testers and possibly the customer to demonstrate what has been tested.
 
+- **Specs** - A file containing JavaScript or TypeScript test fixtures, so called because of the '.spec' file extension
+
 ## How Unit Tests work
 
 Unit Test Runners are typically either built directly into an IDE, (Integrated Development Environment), or can be executed easily from the console or shell terminal.  
@@ -144,3 +146,15 @@ Technical debt typically creeps into an application code base where the effort t
 - Improve the payoff, by introducing additional incentives
 - Expose the defects to demostrate what isn't working
 - Regularly review the test strategy, and test cases
+
+## Implementations
+
+| Language | Unit Test Frameworks | Stub and Mock Framework | Test Runners |
+| -------- | ---------- | -------------- | --------- |
+| C#       | MSUnit, NUnit | Moq, RhinoMock | Visual Studio (vstest), JetBrains Resharper |
+| Java     | JUnit | Mockito, Cucumber, Spring, Robot | Eclipse
+| TypeScript, JavaScript | Jasmine, Mocha, Jest, Protractor (Angular io and AngularJs) |  JsMokito, TsMokito, typemoq | Web Browser 
+| C | Unity, Automated Testing Framework | _typically included in base framework_ | gcc, gxx, g++ 
+| C++ | Boost, CppUnit, CppTest  | _typically included in base framework_  | g++
+
+For a more complete list see [Wikipedia - List of Unit Test Frameworks](https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks)
