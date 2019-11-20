@@ -301,47 +301,55 @@ $$E_{change}(t) = 0$$
 
 **Selecting the optimum action**
 
-The measure of success of a single action can be determined as a function of the current state and the exit state of the action.
+The measure of success of a single Action can be determined as a function of the current state and the exit state of the Action.
 
 $$m_{action}(t) = \lvert A_{exit}(t) - S(t) \rvert \\ = \lvert E_{change} \rvert$$
 
-$$M_{action}(t_{0},t_{1}) = 
+$$M_{action}(t) = 
 \begin{cases}
 0, \text{if t < 0} \\
 m_{action}(t_{0}) - c,  \text{if t = 0} \\
-\alpha m_{action}(t_{1}) - c,  \text{if t > 0} \
+\alpha (m_{action}(t_{0+x}) - c),  \text{if t > 0} \
 \end{cases}$$
 
 Where:
-- $m_{action}(t)$ is an assessment made at some point in time, $t_{1}$
+- $m_{action}(t)$ is an assessment made at some point in time, $t$
 - $\alpha$ is a decay factor degrading the benefit of the change over time
 - $c$ is an offset weight to encourage doing some action
 
-Performing no action reveals the current state is maintained, if c = 0:
+Performing no Action reveals the current state is maintained, if c = 0:
 - $M_{action}(0) = \lvert 0 - S(0) \rvert + 0 = S(0) $
 
-Performing an action, and assessing at an arbitrary point in the future,
-- $M_{action}(t_{1}) = \alpha \lvert A_{exit}(t_{1}) - S(t_{1}) \rvert + c$
+Performing an Action, and assessing at an arbitrary point in the future,
+- $M_{action}(t_{1}) = \alpha \lvert A_{exit}(t_{1}) - S(t_{0}) \rvert + c$
 
-Our assessment of the outcome can be shown to be heavily influenced by the decay $ \alpha$
+Our assessment of the outcome can be shown to be heavily influenced by the decay $ \alpha$.  
+- A system which degrades quickly, (high $\alpha$) requires significant effort to maintain.
+- A system which degrades slowly, requires minimal effort to maintain.
 
-The selection of the optimum action to take, can be found by finding the local maxima, for all possible actions.
+The selection of the optimum Action to take, can be found by finding the local maxima, for all possible Actions.
 
 $$M_{MAX action}(t) = \max(\{M_{action_{0}}(t), ... , M_{action_{n-1}}(t)\})$$
 
 **Selecting the optimum decision**
 
-Typically a Choice will have more than one Action, associated with it.  The Runner will execute all Actions, not simply the best action, as the system must be left in a stable and consistent state.
+Typically a Choice will have more than one Action, associated with it.  The Runner will execute all Actions, not simply the best Action, as the system must be left in a stable and consistent state.
 
-Let $m_{choice}(t, a)$ be the measure of success of an action, for a given choice, where the choice has several possible actions.
+Let:
+- $m_{choice}(t, a)$ be the measure of success of an Action, for a given choice, where the choice has several possible Actions
+- $a$ be the selected Action
 
-The measure of success of a single choice can be determined as a sum of the related actions of that choice.  In short, for each action $a$, of a choice 
+The measure of success of a single Choice can be determined as a sum of the related Actions of that Choice.  In short, each action effects the success, and the choice success can be measured as
 
-$m_{choice}(t) = \sum_{a=0}^{n-1} m_{choice}(t, a)$
+$$M_{choice}(t) = \sum_{a=0}^{n-1} m_{choice}(t, a) \\ = \sum_{a=0}^{n-1} m_{action_{a}}(t)$$
 
-The best choice to make is therefore, the maximum for all possible choices, $q$.
+The best Choice to make is therefore, the maximum for all possible Choices, $q$.
 
-$M_{choice}(t) = \max(\\{ m_{choice(0)}{1}(t), ... , m_{choice(q-1)}(t)\\})$
+$$M_{MAX choice}(t) = \max(\{ M_{choice(0)}{1}(t), ... , M_{choice(q-1)}(t)\})$$
+
+However, it should be noted that this is only true, if the measurement of success uses a consistent time $t$ and $\alpha$ and $c$ for all assessments.
+
+In reality, some Actions may degrade faster than others, due to their impact on the system and the systems resistance to that change.
 
 <script>
     var config = {
