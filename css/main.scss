@@ -90,3 +90,10 @@ div[class*="language-"] div.highlight pre.highlight {
   background: #f9f9f9;
   padding: 5px;
 }
+
+// Mermaid graphs
+
+div.mermaid {
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 7pt;
+}
