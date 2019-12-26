@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "SOLID Design Principles"
+title: "Design Principles - SOLID"
 date: 2019-07-31
 ---
-**SOLID Application Practices are well defined principles which increase an object oriented application's flexibility and extensibility.**
+SOLID Application Practices are well defined principles which increase an object oriented application's flexibility and extensibility.
 
 - [Single Responsibility Principle](#single-responsibility-principle)
 - [Open Closed Principle](#open-closed-principle)

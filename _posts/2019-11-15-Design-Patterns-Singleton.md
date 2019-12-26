@@ -4,7 +4,7 @@ title: "Design Patterns - Singleton"
 date: 2019-11-15
 tags: design pattern
 ---
-** Ensuring only a single instance of a class type exists **
+Ensuring only a single instance of a class type exists
 
 ## Goal
 

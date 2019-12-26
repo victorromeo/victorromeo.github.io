@@ -4,7 +4,7 @@ title: "Unit Testing"
 date: 2019-11-15
 tags: agile testing
 ---
-**Unit Testing is the process of validating small units of code, to confirm their expected behaviour within a larger application**
+Unit Testing is the process of validating small units of code, to confirm their expected behaviour within a larger application
 
 ## What are Unit Tests
 

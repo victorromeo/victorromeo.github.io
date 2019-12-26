@@ -4,7 +4,7 @@ title: "Design Patterns - Proxy"
 date: 2019-11-15
 tags: design pattern
 ---
-**An object which represents another object or data record, and by doing so, simplifies and abstract the application from the delegating object**
+An object which represents another object or data record, and by doing so, simplifies and abstract the application from the delegating object
 
 ## Goal
 

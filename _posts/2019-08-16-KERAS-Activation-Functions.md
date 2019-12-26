@@ -4,6 +4,7 @@ title: "KERAS Activation Functions"
 date: 2019-08-16
 tags: keras tensorflow machinelearning ai
 ---
+The powerful Keras framework (which supplements other machine learning technologies such as Tensorflow) provides a set of inbuilt activation functions which are provide a alternative behaviours for different machine learning scenarios.
 
 ### ReLu 
 **Rectified Linear Unit**

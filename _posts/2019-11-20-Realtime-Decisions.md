@@ -3,8 +3,6 @@ layout: post
 title: "Realtime Decisions"
 date: 2019-11-20
 ---
-
-## Background
 Most operations in a system typically require decisions to be made to ensure that logical execution flow is followed and that business policies are adhered with.
 
 Decisions are choices which determine a course of actions and steer the outcome of a process toward a goal.  The faster compute and data access becomes, the faster decisions are being made.  Decisions don't always however result in achieving the desired result, at least not without further correction.
