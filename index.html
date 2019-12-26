@@ -1,6 +1,17 @@
 ---
 layout: default
-title: Factorem
+title: victorromeo
 ---
-
-Watch this space :)
+{% assign sorted = (site.posts | sort: 'title') %}
+{% for post in sorted %}
+{% if post.hidden != true %}
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-10"><a href="{{ post.url }}">{{ post.title }}</a></div>
+</div>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">{{ post.excerpt }}</div>
+</div>
+{% endif %}
+{% endfor %}
