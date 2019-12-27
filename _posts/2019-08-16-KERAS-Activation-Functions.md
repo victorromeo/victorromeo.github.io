@@ -11,17 +11,19 @@ The powerful Keras framework (which supplements other machine learning technolog
 keras.activations.elu(x, alpha=1.0)
 ```
 
-Arguments:
+_Arguments_
+
 * x: Input tensor 
 * alpha: A scalar, slope of negative section
   
-Returns:
+_Returns_
+
 The exponential linear activation: <code>x</code> if <code>x &gt; 0</code> and <code>alpha * (exp(x) -1) </code> if <code>x &lt; 0</code>
 
 $$y = 
 \begin{cases}
-x, \text{if x >= 0} \\
-alpha * (exp(x) - 1),  \text{if x < 0} \\
+x, &\text{if x >= 0} \\
+alpha * (e^x - 1),  &\text{if x < 0} \\
 \end{cases}$$
 
 ## softmax
@@ -29,17 +31,20 @@ alpha * (exp(x) - 1),  \text{if x < 0} \\
 ```python
 keras.activations.softmax(x, axis=-1)
 ```
-Arguments
+_Arguments_
 
 x: Input tensor.
 axis: Integer, axis along which the softmax normalization is applied.
-Returns
+
+_Returns_
 
 Tensor, output of softmax transformation.
 
-TODO: --> $\sigma(z)_i = e^z / \sum_{a=0}^{n-1} x$
+$$
+    \sigma(z)_i = \frac{e^z}{\sum_{j=1}^{K} e^{zj}} \textrm{for i}=1,...,K \textrm{ and z} = (z_1, ... , z_K) \epsilon \R ^ K 
+$$
 
-**Comment [(Source)](https://en.wikipedia.org/wiki/Softmax_function)**
+_Comment_ [(Source)](https://en.wikipedia.org/wiki/Softmax_function)
 
 In mathematics, the softmax function, also known as softargmax or normalized exponential function, is a function that takes as input a vector of K real numbers, and normalizes it into a probability distribution consisting of K probabilities proportional to the exponentials of the input numbers. That is, prior to applying softmax, some vector components could be negative, or greater than one; and might not sum to 1; but after applying softmax, each component will be in the interval (0,1), and the components will add up to 1, so that they can be interpreted as probabilities. Furthermore, the larger input components will correspond to larger probabilities. Softmax is often used in neural networks, to map the non-normalized output of a network to a probability distribution over predicted output classes.
 
@@ -52,6 +57,57 @@ If we take an input of [1, 2, 3, 4, 1, 2, 3], the softmax of that is [0.024, 0.0
 array([0.02364054, 0.06426166, 0.1746813, 0.474833, 0.02364054,
        0.06426166, 0.1746813])
 ```
+
+## selu - Scaled Exponential Linear Unit
+
+```python 
+keras.activations.selu(x)
+```
+
+_Arguments_
+
+x: A tensor or variable to compute the activation function for
+
+_Returns_
+
+The scaled exponential unit activation: <code>scale * elu(x, alpha)</code>
+
+
+_Comment_ [Source](https://keras.io/activations/#selu) 
+
+SELU is equal to: <code>scale * elu(x, alpha)</code>, where <code>alpha</code> and <code>scale</code> are predefined constants. The values of <code>alpha</code> and <code>scale</code> are chosen so that the mean and variance of the inputs are preserved between two consecutive layers as long as the weights are initialized correctly (see lecun_normal initialization) and the number of inputs is "large enough" (see references for more information).
+
+## softplus
+
+```python
+keras.activations.softplus(x)
+```
+
+_Arguments_
+
+x: Input tensor
+
+_Returns_
+
+The softplus activation: $log(exp(e) + 1)$
+
+![Softplus](/images/articles/Keras/Softplus.png)
+
+## Softsign
+
+```python
+keras.activations.softsign(x)
+```
+
+_Arguments_
+
+x: Input tensor.
+
+_Returns_
+
+The softsign activation: $\frac{x}{\lvert{x}\rvert + 1}$
+
+![Softsign](/images/articles/Keras/Softsign.png)
 
 ## ReLu 
 **Rectified Linear Unit**
@@ -69,4 +125,57 @@ This popular activation function is used
 
 ![ReLu](/images/articles/Keras/RELU.png){:. center-image}
 
-More to come shortly.
+## tanh - Hyperbolic tangent
+
+```python
+keras.activations.tanh(x)
+```
+
+_Arguments_
+
+x: Input tensor.
+
+_Returns_
+
+The hyperbolic activation: $tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$.
+
+![tanh](/images/articles/Keras/tanh.png)
+
+## Sigmoid
+
+```python
+keras.activations.sigmoid(x)
+```
+
+_Arguments_
+
+x: Input tensor.
+
+_Returns_
+
+The sigmoid activation: $\frac{1}{1 + e^{-x}}$.
+
+![Sigmoid](/images/articles/Keras/Sigmoid.png)
+
+## Hard Sigmoid
+
+```python
+keras.activations.hard_sigmoid(x)
+```
+
+Faster to compute than sigmoid activation.
+
+_Arguments_
+
+x: Input tensor.
+
+_Returns_
+
+Hard sigmoid activation:
+
+$$y = 
+\begin{cases} 
+  0 &\text{ if x < -2.5 } \\
+  1 &\text{ if x > 2.5 }  \\
+  0.2 * x + 0.5 &\text{ if -2.5 <= x <= 2.5 }
+\end{cases}$$
