@@ -10,6 +10,8 @@ type: article
 
 The `ASP.Net Core framework` has been a significant shift from the original `ASP.Net Web Forms` request processing chain.  Here's a rundown on the major elements.
 
+[Derived and extended from Source](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/)
+
 ## Startup
 
 The Startup class is used to configure the application
@@ -634,10 +636,519 @@ public class Program
 * [User Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1)
 
 ## Options
+
+The Options pattern in `ASP.NET` core apps ensures the application adheres to the principles
+-  Encapsulation (Interface segregation principle)
+   - Code depends only on the features it requires    
+-  Separation of concerns
+   - Settings for an application aren't dependent or coupled with one another
+
+The `IOptionsMonitor<TOptions>` generic interface is used to retrieve options and manage option notifications for `TOptions`
+- Change notifications
+- Named options
+- Reloadable configuration
+- Selective option invalidation
+  
+```csharp
+public class MyOptions
+{
+    public MyOptions()
+    {
+        // Set default value.
+        Option1 = "value1_from_ctor";
+    }
+    
+    public string Option1 { get; set; }
+    public int Option2 { get; set; } = 5;
+}
+
+...
+
+// Register the Configuration instance which MyOptions binds against.
+services.Configure<MyOptions>(Configuration);
+
+...
+
+public IndexModel(
+    IOptionsMonitor<MyOptions> optionsAccessor, 
+    IOptionsMonitor<MyOptionsWithDelegateConfig> optionsAccessorWithDelegateConfig, 
+    IOptionsMonitor<MySubOptions> subOptionsAccessor, 
+    IOptionsSnapshot<MyOptions> snapshotOptionsAccessor, 
+    IOptionsSnapshot<MyOptions> namedOptionsAccessor)
+{
+    _options = optionsAccessor.CurrentValue;
+    _subOptions = subOptionsAccessor.CurrentValue;
+    _snapshotOptions = snapshotOptionsAccessor.Value;
+    _named_options_1 = namedOptionsAccessor.Get("named_options_1");
+    _named_options_2 = namedOptionsAccessor.Get("named_options_2");
+
+    // Simple options
+    var option1 = _options.Option1;
+    var option2 = _options.Option2;
+    var simpleOptions = $"option1 = {option1}, option2 = {option2}";
+}
+
+```
+
 ## Environments
+
+The `ASPNETCORE_ENVIRONMENT` variable can be set to any value, but there are three provided by the framework
+- Development 
+  - expose features which shouldn't be exposed in production
+- Staging
+- Production
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    if (env.IsProduction() || env.IsStaging() || env.IsEnvironment("Staging_2"))
+    {
+        app.UseExceptionHandler("/Error");
+    }
+
+    app.UseStaticFiles();
+    app.UseMvc();
+}
+```
+
+Visual Studio Code uses a .vscode/launch.json file where the environment variable can be defined.
+
+```json
+{
+   "version": "0.2.0",
+   "configurations": [
+        {
+            "name": ".NET Core Launch (web)",
+
+            ... additional VS Code configuration settings ...
+
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
+    ]
+}
+```
+
+The production environment should be configured to maximize security, performance, and app robustness. Some common settings that differ from development include:
+
+- Caching.
+- Client-side resources are bundled, minified, and potentially served from a CDN.
+- Diagnostic error pages disabled.
+- Friendly error pages enabled.
+- Production logging and monitoring enabled. For example Application Insights.
+
+#### Console 
+
+<code>
+set ASPNETCORE_ENVIRONMENT=Development
+</code>
+
+#### PowerShell 
+
+<code>
+$Env:ASPNETCORE_ENVIRONMENT = "Development"
+</code>
+
+#### web.config 
+
+```xml
+<PropertyGroup>
+  <EnvironmentName>Development</EnvironmentName>
+</PropertyGroup>
+```
+
+#### linux (bash)
+
+<code>
+export ASPNETCORE_ENVIRONMENT=Development
+</code>
+
 ## Logging
+
+The `.NET Core` supports a logging API which enables use of built-in and third-party logging providers.
+
+When using the [Generic Host](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.1), logging is added through registration.
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.ClearProviders();
+            logging.AddConsole();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+When a non-host app needs logging, a LoggerFactory can be used to create a logging provider.
+
+```csharp
+var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder
+        .AddFilter("Microsoft", LogLevel.Warning)
+        .AddFilter("System", LogLevel.Warning)
+        .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+        .AddConsole()
+        .AddEventLog();
+});
+ILogger logger = loggerFactory.CreateLogger<Program>();
+logger.LogInformation("Example log message");
+```
+
+The logging can be directed automatically to the following logging providers
+- [Console](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#console-provider)
+- [Debug](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#debug-provider)
+- [EventSource](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#event-source-provider)
+- [EventLog](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#windows-eventlog-provider) (on a Windows O/S)
+
+### Example 
+
+```csharp
+public class AboutModel : PageModel
+{
+    private readonly ILogger _logger;
+
+    public AboutModel(ILogger<AboutModel> logger)
+    {
+        _logger = logger;
+    }
+    
+    ...
+}
+```
+
 ## Routing
+
+Most web applications require a routing scheme to direct requests to the appropriate operations and resources so that the correct response can be generated.
+
+The default route is `{controller=Home}/{action=Index}/{id?}`
+
+The routing can be customized as required to replace or extend the default route behaviour and by doing this control the execution of requests.
+
+Routing uses endpoints (Endpoint) to represent logical endpoints in an app.
+
+An endpoint defines a delegate to process requests and a collection of arbitrary metadata. The metadata is used to implement cross-cutting concerns based on policies and configuration attached to each endpoint.
+
+When a Routing Middleware executes, it sets an endpoint (Endpoint) and route values to a feature on the HttpContext. For the current request:
+
+- Calling `HttpContext.GetEndpoint` gets the endpoint.
+- `HttpRequest.RouteValues` gets the collection of route values.
+
+When the endpoint delegate is executed, `RouteContext.RouteData` is set, based on processing already carried out.
+
+- `RouteData.Values` is a dictionary of route values produced from the route. These values are usually determined by tokenizing the URL and can be used to accept user input or to make further dispatching decisions inside the app.
+- `RouteData.DataTokens` is a property bag of additional data related to the matched route. DataTokens are provided to support associating state data with each route so that the app can make decisions based on which route matched. These values are developer-defined and do not affect the behavior of routing in any way. Additionally, values stashed in RouteData.DataTokens can be of any type, in contrast to RouteData.Values, which must be convertible to and from strings.
+- `RouteData.Routers` is a list of the routes that took part in successfully matching the request. Routes can be nested inside of one another. The Routers property reflects the path through the logical tree of routes that resulted in a match. Generally, the first item in Routers is the route collection and should be used for URL generation. The last item in Routers is the route handler that matched.
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    // Matches request to an endpoint.
+    app.UseRouting();
+
+    // Endpoint aware middleware. 
+    // Middleware can use metadata from the matched endpoint.
+    app.UseAuthorization();
+
+    // Execute the matched endpoint.
+    app.UseEndpoints(endpoints =>
+    {
+        // Configuration of app endpoints.
+        endpoints.MapRazorPages();
+        endpoints.MapGet("/", context => context.Response.WriteAsync("Hello world"));
+        endpoints.MapHealthChecks("/healthz");
+    });
+}
+```
+
+Most applications create routes by calling [MapRoute](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.maprouteroutebuilderextensions.maproute)
+
+```csharp
+routes.MapRoute(
+    name: "default",
+    template: "{controller=Home}/{action=Index}/{id?}");
+```
+
 ## Error Handling
+
+Error Handling is typically customized based on the application scenario and the environmental configuration.
+
+#### Development 
+
+Enabling the Developer Exception Page exposes
+- Stack Trace
+- Query String parameters
+- Cookies
+- Headers
+
+```csharp 
+if (env.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+```
+
+### Production 
+
+In Production the error handler
+ - Catches and logs exceptions
+ - Re-executes requires in an alternate pipeline, unless a response has started
+
+The default error page `Error.cshtml` which uses the default PageModel `ErrorModel` is typically found in the Pages folder.  The action method which renders an error follows.
+
+```csharp 
+[AllowAnonymous]
+public IActionResult Error()
+{
+    return View(new ErrorViewModel 
+        { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+}
+```
+
+<div class="alert alert-warning">Never expose sensitive information to end users. This information could pose a security risk which assists malicious damage to the application, its users or its data.</div>
+
+### Exception Handling via Lambda expressions
+
+``` csharp
+if (env.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+   app.UseExceptionHandler(errorApp =>
+   {
+        errorApp.Run(async context =>
+        {
+            context.Response.StatusCode = 500;
+            context.Response.ContentType = "text/html";
+
+            await context.Response.WriteAsync("<html lang=\"en\"><body>\r\n");
+            await context.Response.WriteAsync("ERROR!<br><br>\r\n");
+
+            var exceptionHandlerPathFeature = 
+                context.Features.Get<IExceptionHandlerPathFeature>();
+
+            // Use exceptionHandlerPathFeature to process the exception (for example, 
+            // logging), but do NOT expose sensitive error information directly to 
+            // the client.
+
+            if (exceptionHandlerPathFeature?.Error is FileNotFoundException)
+            {
+                await context.Response.WriteAsync("File error thrown!<br><br>\r\n");
+            }
+
+            await context.Response.WriteAsync("<a href=\"/\">Home</a><br>\r\n");
+            await context.Response.WriteAsync("</body></html>\r\n");
+            await context.Response.WriteAsync(new string(' ', 512)); // IE padding
+        });
+    });
+    app.UseHsts();
+}
+```
+
 ## Make HTTP Requests
-## Content Root
-## Web Root
+
+HTTP Client connectivity from the server can be enabled through dependency injection and registration as follows.
+
+```csharp
+public class Startup
+{
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddHttpClient();
+        ....
+
+    }
+    ...
+}
+```
+Accessing the `HttpClient` can then be made via the `IHttpClientFactory` 
+
+```csharp
+public class BasicUsageModel : PageModel
+{
+    private readonly IHttpClientFactory _clientFactory;
+
+    public IEnumerable<GitHubBranch> Branches { get; private set; }
+
+    public bool GetBranchesError { get; private set; }
+
+    public BasicUsageModel(IHttpClientFactory clientFactory)
+    {
+        _clientFactory = clientFactory;
+    }
+
+    public async Task OnGet()
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get,
+            "https://api.github.com/repos/aspnet/AspNetCore.Docs/branches");
+        request.Headers.Add("Accept", "application/vnd.github.v3+json");
+        request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
+
+        var client = _clientFactory.CreateClient();
+
+        var response = await client.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            Branches = await JsonSerializer.DeserializeAsync
+                <IEnumerable<GitHubBranch>>(responseStream);
+        }
+        else
+        {
+            GetBranchesError = true;
+            Branches = Array.Empty<GitHubBranch>();
+        }
+    }
+}
+```
+
+Named HTTPClient instances are also accessible, once registered.
+
+```csharp
+services.AddHttpClient("github", c =>
+{
+    c.BaseAddress = new Uri("https://api.github.com/");
+    // Github API versioning
+    c.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
+    // Github requires a user-agent
+    c.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-Sample");
+});
+```
+
+Then the specific instance is recalled by name as follows.
+
+```csharp
+public class NamedClientModel : PageModel
+{
+    private readonly IHttpClientFactory _clientFactory;
+
+    public IEnumerable<GitHubPullRequest> PullRequests { get; private set; }
+
+    public bool GetPullRequestsError { get; private set; }
+
+    public bool HasPullRequests => PullRequests.Any();
+
+    public NamedClientModel(IHttpClientFactory clientFactory)
+    {
+        _clientFactory = clientFactory;
+    }
+
+    public async Task OnGet()
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get,
+            "repos/aspnet/AspNetCore.Docs/pulls");
+
+        var client = _clientFactory.CreateClient("github");
+
+        var response = await client.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            PullRequests = await JsonSerializer.DeserializeAsync
+                    <IEnumerable<GitHubPullRequest>>(responseStream);
+        }
+        else
+        {
+            GetPullRequestsError = true;
+            PullRequests = Array.Empty<GitHubPullRequest>();
+        }
+    }
+}
+```
+
+## Static Files
+
+Static files are served from within the project's web root folder.  The default directory is _{content}/wwwroot/_, however this can be changed as required via the [UseWebRoot](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_)
+
+### Content Root
+
+Set the content root directory, when the Host is defined.
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>();
+}
+```
+
+### Web Root
+
+To support Static Files, invoke the `UseStaticFiles` method within `Startup.Configure`
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    app.UseStaticFiles();
+}
+```
+
+When serving static files from outside the default directory (_`wwwroot`_), then static folder and routing path must be defined.
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    app.UseStaticFiles(); // For the wwwroot folder
+
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "MyStaticFiles")),
+        RequestPath = "/StaticFiles"
+    });
+}
+```
+
+Setting HTTP Response Headers on the static file reponses requires registration of a context aware lambda expression.
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    var cachePeriod = env.IsDevelopment() ? "600" : "604800";
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        OnPrepareResponse = ctx =>
+        {
+            // Requires the following import:
+            // using Microsoft.AspNetCore.Http;
+            ctx.Context.Response.Headers.Append("Cache-Control", $"public, max-age={cachePeriod}");
+        }
+    });
+}
+```
+
+The code above sets the caching on the static files, using an environment variable.
+
+![](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files/_static/add-header.png?view=aspnetcore-3.1)
