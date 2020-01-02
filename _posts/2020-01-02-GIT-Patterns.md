@@ -3,7 +3,11 @@ layout: post
 title: "GIT Patterns"
 date: 2020-01-02
 tags: sourcecontrol
+type: "spec"
+image: https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png
+type: spec
 ---
+GIT is a popular source control repository supporting a local + remote architecture for storing independent but linked copies of the source code.  This pattern assists offline development activity, as changes can still be committed to the local store, and then later merged into a central server store, once connectivity is available.
 
 <style>
     table {
@@ -19,7 +23,6 @@ tags: sourcecontrol
     }
 </style>
 
-GIT is a popular source control repository supporting a local + remote architecture for storing independent but linked copies of the source code.  This pattern assists offline development activity, as changes can still be committed to the local store, and then later merged into a central server store, once connectivity is available.
 
 [Source (Cheat Sheet)](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
 

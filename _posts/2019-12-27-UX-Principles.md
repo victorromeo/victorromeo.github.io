@@ -3,7 +3,12 @@ layout: post
 title: "UX Principles"
 date: 2019-12-27
 tags: design ux patterns
+image: https://images.unsplash.com/photo-1466690672306-5f92132f7248?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+imagecredit: https://unsplash.com/@markusspiske
+type: article
 ---
+The reason some applications are a pleasure to use typically is because they have been extensively designed to be that way, using thoughtful consideration of the inherent way humans interact with systems.  This reduces the friction between the system and encourages better uptake of the final product.
+
 <div class="row">
 
 <div class="col-4">

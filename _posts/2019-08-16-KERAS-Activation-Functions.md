@@ -3,6 +3,9 @@ layout: post
 title: "KERAS Activation Functions"
 date: 2019-08-16
 tags: keras tensorflow machinelearning ai
+image: https://images.unsplash.com/photo-1494869042583-f6c911f04b4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+imagecredit: https://unsplash.com/@amandadalbjorn
+type: spec
 ---
 The powerful Keras framework (which supplements other machine learning technologies such as Tensorflow) provides a set of inbuilt activation functions which provide a alternative behaviours for different machine learning scenarios.
 

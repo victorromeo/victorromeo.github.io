@@ -3,6 +3,8 @@ layout: post
 title: "Ubuntu Shell Commands"
 date: 2019-12-26
 tags: Ubuntu shell unix
+image: https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png
+type: spec
 ---
 The Ubuntu operating system is a popular operating system, however often accessing a gui is either not appropriate or simple not available.  These command line operations help the administration and use of an Ubuntu host.
 

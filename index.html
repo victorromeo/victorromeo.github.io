@@ -2,16 +2,43 @@
 layout: default
 title: victorromeo
 ---
+
+<style>
+img.card-img-top {
+    width: 100%;
+    height: 5vw;
+    object-fit:cover;
+}
+</style>
+
+<div class="card-columns">
 {% assign sorted = (site.posts | sort: 'title') %}
 {% for post in sorted %}
+{% assign tags = post.tags | split: ", " %}
+
 {% if post.hidden != true %}
-<div class="row">
-    <div class="col-2"></div>
-    <div class="col-10"><a href="{{ post.url }}">{{ post.title }}</a></div>
+{% if post.image %}
+
+<div class="card">
+    <img src="{{ post.image }}" class="card-img-top">
+    <div class="card-header">{% if post.type %}<span class="badge badge-warning">{{post.type}}</span>&nbsp;{% endif %}<a href="{{ post.url }}">{{ post.title }}</a></div>
+    <div class="card-body">
+        <p class="card-text">{{ post.excerpt }}</p>
+        <p class="card-text">tags: {{ post.tags | sort | join: ', ' | downcase }}</p>
+    </div>
 </div>
-<div class="row">
-    <div class="col-2"></div>
-    <div class="col-10">{{ post.excerpt }}</div>
+
+{% else %}
+<div class="card">
+    <div class="card-header"><a href="{{ post.url }}">{{ post.title }}</a></div>
+    <div class="card-body">
+        <p class="card-text">{{ post.excerpt }}</p>
+        <p class="card-text">tags: {{ post.tags | sort | join: ', ' | downcase }}</p>
+    </div>
 </div>
+
+{% endif %}
+
 {% endif %}
 {% endfor %}
+</div>

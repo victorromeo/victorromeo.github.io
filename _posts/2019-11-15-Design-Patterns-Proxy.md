@@ -3,6 +3,9 @@ layout: post
 title: "Design Patterns - Proxy"
 date: 2019-11-15
 tags: design pattern
+image: https://images.unsplash.com/photo-1480732149909-d4e710a0f81c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+imagecredit: https://unsplash.com/@benwhitephotography
+type: concept
 ---
 An object which represents another object or data record, and by doing so, simplifies and abstract the application from the delegating object
 
