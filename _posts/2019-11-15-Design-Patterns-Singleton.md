@@ -3,7 +3,8 @@ layout: post
 title: "Design Patterns - Singleton"
 date: 2019-11-15
 tags: design pattern
-image: https://images.unsplash.com/photo-1488257471178-5b88b55899e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+image: https://images.unsplash.com/photo-1488257471178-5b88b55899e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9
+thumb: https://images.unsplash.com/photo-1488257471178-5b88b55899e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
 imagecredit: https://unsplash.com/@lastly
 type: concept
 ---

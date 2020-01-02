@@ -2,7 +2,8 @@
 layout: post
 title: "Design Principles - SOLID"
 date: 2019-07-31
-image: https://images.unsplash.com/photo-1431223430019-7c33d109bf40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+image: https://images.unsplash.com/photo-1431223430019-7c33d109bf40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9
+thumb: https://images.unsplash.com/photo-1431223430019-7c33d109bf40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
 imagecredit: https://unsplash.com/@frantzou
 type: concept
 ---

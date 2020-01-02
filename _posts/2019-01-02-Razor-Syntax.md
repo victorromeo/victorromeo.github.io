@@ -4,6 +4,7 @@ title: "ASP.Net MVC Razor Syntax"
 date: 2019-12-27
 tags: Microsoft web asp.net razor
 image: https://images.unsplash.com/photo-1524230616393-d6229fcd2eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9
+thumb: https://images.unsplash.com/photo-1524230616393-d6229fcd2eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
 imagecredit: https://unsplash.com/@joshsorenson
 type: spec
 ---

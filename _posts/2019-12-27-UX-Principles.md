@@ -3,7 +3,8 @@ layout: post
 title: "UX Principles"
 date: 2019-12-27
 tags: design ux patterns
-image: https://images.unsplash.com/photo-1466690672306-5f92132f7248?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+image: https://images.unsplash.com/photo-1466690672306-5f92132f7248?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9
+thumb: https://images.unsplash.com/photo-1466690672306-5f92132f7248?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
 imagecredit: https://unsplash.com/@markusspiske
 type: article
 ---

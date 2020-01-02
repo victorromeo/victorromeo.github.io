@@ -17,10 +17,10 @@ img.card-img-top {
 {% assign tags = post.tags | split: ", " %}
 
 {% if post.hidden != true %}
-{% if post.image %}
+{% if post.thumb or post.image %}
 
 <div class="card">
-    <img src="{{ post.image }}" class="card-img-top">
+    <img src="{{ post.thumb }}" alt="{{ post.image }}" class="card-img-top">
     <div class="card-header">{% if post.type %}<span class="badge badge-warning">{{post.type}}</span>&nbsp;{% endif %}<a href="{{ post.url }}">{{ post.title }}</a></div>
     <div class="card-body">
         <p class="card-text">{{ post.excerpt }}</p>
