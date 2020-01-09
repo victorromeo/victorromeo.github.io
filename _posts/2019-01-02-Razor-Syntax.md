@@ -13,6 +13,8 @@ ASP.NET MVC Razor Syntax which is rendered via the Razor View Engine has been ar
 
 The Razor syntax is used in Razor Pages, MVC and Blazor web app technologies, although not all technologies implement the full syntax.
 
+<!-- markdownlint-disable MD033 -->
+
 <style>
 .highlighter-rouge {
     padding-left: 20px;
@@ -24,15 +26,19 @@ The Razor syntax is used in Razor Pages, MVC and Blazor web app technologies, al
 The `@` character transitions from HTML to Razor syntax
 
 - Simple example `<p>@model</p>`
-- Multiline example 
-    ```xml
+- Multiline example
+  
+    ```HTML+Razor
+
     <p>
     @if (value % 2 == 0)
     {
         <div>The value was even.</div>
     }
     </p>
+
     ```
+
 - Accessor support `<p>@DateTime.Now.Year</p>`
 - Escaping the `@` character is supported by a double `@@`
 <br>e.g. `<p>@@Username</p>`
@@ -51,7 +57,7 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        // Enable the Razor View Engine 
+        // Enable the Razor View Engine
         services.AddRazorPages();
     }
 
@@ -82,7 +88,6 @@ public class Startup
     }
 }
 ```
-
 
 ### Control Structures
 
@@ -171,7 +176,7 @@ else
 
 #### Compound @using statements
 
-```html 
+```html
 @using (Html.BeginForm())
 {
     <div>
@@ -219,9 +224,9 @@ finally
 <!-- HTML comment -->
 ```
 
-## Directives
+### Directives
 
-#### @ 
+### @
 
 ```html
 @{
@@ -255,7 +260,8 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 @attribute [Authorize]
 ```
 
-#### @code 
+#### @code
+
 - Enables a [Razor component](https://docs.microsoft.com/en-us/aspnet/core/blazor/components?view=aspnetcore-3.1) to add C# members to a component
 
 ```html
@@ -265,6 +271,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 ```
 
 #### @functions
+
 - Enables the adding of C# members (fields, properties and methods) to the generated class
   
 ```html
@@ -275,7 +282,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
     }
 }
 
-<div>From method: @GetHello()</div> 
+<div>From method: @GetHello()</div>
 ```
 
 Which generates the following HTML
@@ -284,15 +291,15 @@ Which generates the following HTML
 <div>From method: Hello</div>
 ```
 
-from the generated Razor C# class 
+from the generated Razor C# class
 
-```csharp 
+```csharp
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 public class _Views_Home_Test_cshtml : RazorPage<dynamic>
 {
-    // Functions placed between here 
+    // Functions placed between here
     public string GetHello()
     {
         return "Hello";
@@ -324,7 +331,7 @@ Another useful example is the creation of template methods
 }
 ```
 
-#### @implements 
+#### @implements
 
 - implements an interface on the generated class
 
@@ -343,6 +350,7 @@ Another useful example is the creation of template methods
 ```
 
 #### @inherits
+
 - Provides full control of the class the view inherits
 
 ```html
@@ -352,25 +360,25 @@ Another useful example is the creation of template methods
 An example of the generated C# class
 
 ```csharp
-
 using Microsoft.AspNetCore.Mvc.Razor;
 
 public abstract class CustomRazorPage<TModel> : RazorPage<TModel>
 {
-    public string CustomText { get; } = 
+    public string CustomText { get; } =
         "Gardyloo! - A Scottish warning yelled from a window before dumping" +
         "a slop bucket on the street below.";
 }
 ```
 
 The `CustomText` is displayed in a view:
+
 ```html
 @inherits CustomRazorPage<TModel>
 
 <div>Custom text: @CustomText</div>
 ```
 
-Which renders the following HTML 
+Which renders the following HTML
 
 ```html
 <div>
@@ -389,10 +397,12 @@ Which renders the following HTML
 ```
 
 #### @inject
+
 - Supports injecting a service from the service container into a view
 - [Further detail](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/dependency-injection?view=aspnetcore-3.1)
 
 #### @model
+
 - Specifies the type of model passed to a view or page
 - _MVC Views or Razor pages only_
   
@@ -409,17 +419,20 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel> {
 ```
 
 #### @namespace
+
 - Sets the namespace of the class generated Razor page, MVC view or Razor component
 
 ```html
 @namespace Your.Namespace.Here
 ```
 
-#### @page 
+#### @page
+
 - In a .cshtml file, indicates that the file is a Razor page
 - Indicates that a Razor component should handle requests directly
 
 #### @section
+
 - Supports the delayed rendering of the DOM, by passing the definition of an section of the DOM to a child partial view
 - [Further detail](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/layout?view=aspnetcore-3.1#sections)
 
@@ -458,6 +471,7 @@ Which will render as follows
 ```
 
 #### @using
+
 - Adds the C# directive to a generated view
   
 ```html
@@ -483,7 +497,7 @@ Simple Razor components extend the existing Razor syntax, allowing dynamically d
 }
 ```
 
-#### Blazor
+### Blazor
 
 Blazor is a framework for building interactive client-side web UI with .NET:
 
