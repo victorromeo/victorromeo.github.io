@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python workspace setup and virtualenv"
+title: "Python project and environment setup"
 date: 2020-01-09
 tags: python environment
 image: https://images.unsplash.com/photo-1570741066052-817c6de995c8
@@ -116,8 +116,8 @@ Clean the package cache, removing packages found which are not in the Pipfile.lo
 
 Operation | Command
 ----|-----
-Freeze packages creates a file which lists the packages | `pip freeze > requirements.txt`
-Install requirements from a freeze list | `pip install -r requirements.txt`
+Freeze packages creates a file which lists the packages inside a local virtual environment | `pip freeze > requirements.txt`
+Install requirements from a freeze list file | `pip install -r requirements.txt`
 
 ### Project Hierarchy
 
