@@ -137,12 +137,12 @@ p {
 
 ### List Properties
 
-|            property | description |
-| ------------------: | ----------- |
-|          list-style |
-|    list-style-image |
-| list-style-position |
-|     list-style-type |
+|                                                                                    property | description                                                                  | Syntax                               | Applies to |
+| ------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------- | ------------------------------------ | ---------- |
+|                   [list-style](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style) | Shorthand to set  list-style-type, list-style-image, and list-style-position |                                      | List items |
+|       [list-style-image](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image) | Used to set an image as the list item marker                                 | `url("...")`, `none`                      | List items |
+| [list-style-position](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position) | Positions a marker relative to list items                                    | `inside`, `outside`, `inherit`, `initial`, `unset` | List items |
+|         [list-style-type](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type) | Sets the marker shape                                                        | See spec                             | List items |
 
 ### Background Properties
 
@@ -157,13 +157,13 @@ p {
 
 ### Display Properties
 
-|   property | description |
-| ---------: | ----------- |
-|    display |
-|      float |
-|      clear |
-|   overflow |
-| visibility |
+|                                                                  property | description                                                            | Value                                        | Applies to        |
+| ------------------------------------------------------------------------: | ---------------------------------------------------------------------- | -------------------------------------------- | ----------------- |
+|       [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) | Switch between inline and block, and dictate the behavior for children | See spec                                     | All elements      |
+|           [float](https://developer.mozilla.org/en-US/docs/Web/CSS/float) | Pushes an element left or right to allow text to wrap around it        | `left`, `right`, `none`, `inline-start`, `inline-end` | All elements      |
+|           [clear](https://developer.mozilla.org/en-US/docs/Web/CSS/clear) | Asserts that an element should be moved below floating content         | `none`, `left`, `right`, `both`, `inline-start`, `inline-end` | Block level       |
+|     [overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) | When text is too large for the container                               | `visible`, `hidden`, `clip`, `scroll`, `auto`             | Block, Flex, Grid |
+| [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) | show or hide an element                                                | `visible`, `hidden`, `collapse`                      | All elements      |
 
 ### Box Properties
 
