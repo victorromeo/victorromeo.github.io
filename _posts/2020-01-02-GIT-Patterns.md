@@ -10,6 +10,8 @@ type: spec
 ---
 GIT is a popular source control repository supporting a local + remote architecture for storing independent but linked copies of the source code.  This pattern assists offline development activity, as changes can still be committed to the local store, and then later merged into a central server store, once connectivity is available.
 
+<!-- markdownlint-disable MD018 MD033 -->
+
 <style>
     table {
         width:100%;
@@ -23,7 +25,6 @@ GIT is a popular source control repository supporting a local + remote architect
         padding-top: 20px;
     }
 </style>
-
 
 [Source (Cheat Sheet)](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
 
@@ -43,6 +44,7 @@ GIT is a popular source control repository supporting a local + remote architect
 | <code>git diff </code>                         | Show unstaged changes between indexed and working directory                                                                                       |
 
 ### GIT Branches
+
 Commands used to create, merge and list branches
 
 | Command                                     | Description                                                                                              |
@@ -54,6 +56,7 @@ Commands used to create, merge and list branches
 | <code>git merge &lt;branch&gt;</code>       | Merge &lt;branch&gt; into the current branch.                                                            |
 
 ### GIT Changes
+
 Commands used to see changes, and alter those changes to the working directory
 
 | Command                             | Description                                                                                                                                       |
@@ -65,7 +68,8 @@ Commands used to see changes, and alter those changes to the working directory
 | <code>git clean -n</code>           | Lists the files in the current working directory which would be removed if a clean took place                                                     |
 | <code>git clean -r</code>           | Perform a clean on the current working directory                                                                                                  |
 
-### GIT History 
+### GIT History
+
 Commands to see commit history, and revise it as required
 
 | Command                              | Description                                                                                                                                             |
@@ -76,6 +80,7 @@ Commands to see commit history, and revise it as required
 | <code>git reflog</code>              | Show a log of changes to the local repository's HEAD.  Add --relative-date flag to show date info or --all to show all refs.                            |
 
 ### GIT Remote Repositories
+
 Commands which assist in the maintenance, creation and removal or remote repository resources
 
 | Command                                               | Description                                                                                                       |
@@ -89,6 +94,7 @@ Commands which assist in the maintenance, creation and removal or remote reposit
 ### Further Detail
 
 #### GIT Config
+
 - Get and set repository or global options
 - [Specification](https://git-scm.com/docs/git-config)
 
@@ -104,7 +110,8 @@ Commands which assist in the maintenance, creation and removal or remote reposit
 | <code>git config credential.helper cache </code>                              | Caches the credentials to be used later, in `~/.git-credentials` for 900 seconds in the form `https://<username>:<password>@github.com` in clear text |
 | <code>git config credential.helper \'cache --timeout=&lt;timeout&gt;\'</code> | Caches the credentials to be used later, for `<timeout>` seconds in the form `https://<username>:<password>@github.com` in clear text                 |
 
-#### GIT Log 
+#### GIT Log
+
 - Show commit logs
 - [Specification](https://git-scm.com/docs/git-log)
 
@@ -121,6 +128,7 @@ Commands which assist in the maintenance, creation and removal or remote reposit
 | <code>git log --graph --decorate </code>       | Draw a text-based graph, and --decorate adds branch names and tags of commits                                                                                |
 
 #### GIT Diff
+
 - Show changes between commits, commit and working tree, etc
 - [Specification](https://git-scm.com/docs/git-diff)
 
@@ -129,7 +137,8 @@ Commands which assist in the maintenance, creation and removal or remote reposit
 | <code>git diff HEAD</code>     | Show difference between working directory and last commit. |
 | <code>git diff --cached</code> | Show difference between staged changes and last commit     |
 
-#### GIT Reset 
+#### GIT Reset
+
 - Reset current HEAD to the specified state
 - [Specification](https://git-scm.com/docs/git-reset)
 
@@ -157,9 +166,3 @@ Commands which assist in the maintenance, creation and removal or remote reposit
 | Command                                       | Description                                                                                                                               |
 | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <code>git pull --rebase &lt;remote&gt;</code> | Fetch the remote’s copy of current branch and rebases it into the local copy. Uses git rebase instead of merge to integrate the branches. |
-
-
-
-
-| <code></code>     |  |
-| <code></code>     |  |
