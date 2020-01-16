@@ -92,13 +92,17 @@ Commands which assist in the maintenance, creation and removal or remote reposit
 - Get and set repository or global options
 - [Specification](https://git-scm.com/docs/git-config)
 
-| Command                                                                       | Description                                                                                                                                          |
-| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <code>git config --global user.name &lt;name&gt; </code>                      | Define the author name to be used for all commits by the current user.                                                                               |
-| <code>git config --global user.email &lt;email&gt;</code>                     | Define the author email to be used for all commits by the current user.                                                                              |
-| <code>git config --global alias.&lt;alias-name&gt; &lt;git-command&gt;</code> | Create shortcut for a Git command. E.g. alias.glog log --graph --oneline will set git glog equivalent to git log --graph --oneline.                  |
-| <code>git config --system core.editor &lt;editor&gt;</code>                   | Set text editor used by commands for all users on the machine. &lt;editor&gt; arg should be the command that launches the desired editor (e.g., vi). |
-| <code>git config --global --edit</code>                                       | Open the global configuration file in a text editor for manual editing.                                                                              |
+| Command                                                                       | Description                                                                                                                                           |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <code>git config --global user.name &lt;name&gt; </code>                      | Define the author name to be used for all commits by the current user.                                                                                |
+| <code>git config --global user.email &lt;email&gt;</code>                     | Define the author email to be used for all commits by the current user.                                                                               |
+| <code>git config --global alias.&lt;alias-name&gt; &lt;git-command&gt;</code> | Create shortcut for a Git command. E.g. alias.glog log --graph --oneline will set git glog equivalent to git log --graph --oneline.                   |
+| <code>git config --system core.editor &lt;editor&gt;</code>                   | Set text editor used by commands for all users on the machine. &lt;editor&gt; arg should be the command that launches the desired editor (e.g., vi).  |
+| <code>git config --global --edit</code>                                       | Open the global configuration file in a text editor for manual editing.                                                                               |
+| <code>git config credential.helper store</code>                               | Stores the credentials to be used later, in `~/.git-credentials` in the form `https://<username>:<password>@github.com` in clear text                 |
+| <code>git config credential.helper \'store --file=&lt;filepath&gt;\'</code>   | Looks up and stores the credentials to be used later, in `<filepath>` in the form `https://<username>:<password>@github.com` in clear text            |
+| <code>git config credential.helper cache </code>                              | Caches the credentials to be used later, in `~/.git-credentials` for 900 seconds in the form `https://<username>:<password>@github.com` in clear text |
+| <code>git config credential.helper \'cache --timeout=&lt;timeout&gt;\'</code> | Caches the credentials to be used later, for `<timeout>` seconds in the form `https://<username>:<password>@github.com` in clear text                 |
 
 #### GIT Log 
 - Show commit logs
