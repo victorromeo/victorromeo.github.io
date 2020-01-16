@@ -106,9 +106,9 @@ Commands which assist in the maintenance, creation and removal or remote reposit
 | <code>git config --system core.editor &lt;editor&gt;</code>                   | Set text editor used by commands for all users on the machine. &lt;editor&gt; arg should be the command that launches the desired editor (e.g., vi).  |
 | <code>git config --global --edit</code>                                       | Open the global configuration file in a text editor for manual editing.                                                                               |
 | <code>git config credential.helper store</code>                               | Stores the credentials to be used later, in `~/.git-credentials` in the form `https://<username>:<password>@github.com` in clear text                 |
-| <code>git config credential.helper \'store --file=&lt;filepath&gt;\'</code>   | Looks up and stores the credentials to be used later, in `<filepath>` in the form `https://<username>:<password>@github.com` in clear text            |
+| <code>git config credential.helper 'store --file=&lt;filepath&gt;'</code>   | Looks up and stores the credentials to be used later, in `<filepath>` in the form `https://<username>:<password>@github.com` in clear text            |
 | <code>git config credential.helper cache </code>                              | Caches the credentials to be used later, in `~/.git-credentials` for 900 seconds in the form `https://<username>:<password>@github.com` in clear text |
-| <code>git config credential.helper \'cache --timeout=&lt;timeout&gt;\'</code> | Caches the credentials to be used later, for `<timeout>` seconds in the form `https://<username>:<password>@github.com` in clear text                 |
+| <code>git config credential.helper 'cache --timeout=&lt;timeout&gt;'</code> | Caches the credentials to be used later, for `<timeout>` seconds in the form `https://<username>:<password>@github.com` in clear text                 |
 
 #### GIT Log
 
