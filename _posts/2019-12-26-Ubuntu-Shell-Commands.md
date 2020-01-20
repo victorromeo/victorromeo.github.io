@@ -9,17 +9,19 @@ type: spec
 ---
 The Ubuntu operating system is a popular operating system, however often accessing a gui is either not appropriate or simple not available.  These command line operations help the administration and use of an Ubuntu host.
 
-# File systems
+<!-- markdownlint-disable MD018 MD033 -->
+
+## File systems
 
 Ubuntu can use a range of different file systems, however here are the most typical
 
 * Extended File System [EXT](https://en.wikipedia.org/wiki/Extended_file_system)
-    * EXT4 is the standard for Ubuntu
-    * Windows cannot access these file systems without additional functionality  
+  * EXT4 is the standard for Ubuntu
+  * Windows cannot access these file systems without additional functionality  
 * File Allocation Table [FAT](https://en.wikipedia.org/wiki/File_Allocation_Table)
-    * Useful to transfer files between Windows and *nix systems like Ubuntu as both operating systems support the standard implementation   
+  * Useful to transfer files between Windows and *nix systems like Ubuntu as both operating systems support the standard implementation
 
-# Concepts and Glossary
+## Concepts and Glossary
 
 Term | Meaning
 ----|-----
@@ -35,7 +37,7 @@ Command Line | Description
 **file -h /bin/sh** | *(Symbolic link)* A portable way to determine which shell is being used by a system
 **find -L /bin -samefile /bin/sh** | *(Hard link)* A portable way to determine which shell is being used by a system
 
-# Basic
+## Basic
 
 Command Line | Description
 --------|--------
@@ -64,7 +66,7 @@ Command Line | Description
 **nano** *file* | minimalist editor with cli gui
 **vi** *file* | (*vim*) powerful minimalist editor with no gui
 
-# Search 
+## Search
 
 Command Line | Description
 ---- | -----
@@ -73,7 +75,7 @@ Command Line | Description
 *command* | **grep** *pattern* | search for pattern in the output of command
 **locate** *file* | find all instances of file
 
-# System Details
+## System Details
 
 Command Line | Description
 ---- | -----
@@ -94,7 +96,7 @@ Command Line | Description
 **lsusb** | list usb devices
 **dmesg** | show recent system log messages
 
-# Compression
+## Compression
 
 Command Line | Description
 ---- | -----
@@ -107,35 +109,36 @@ Command Line | Description
 **gzip** *file* | compresses file and renames it to file.gz
 **gzip** -d *file*.gz | decompresses file.gz back to file
 
-# Processes
+## Processes
+
 May require elevation to modify processes not owned by the current user
 
 Command Line | Description
 ---- | -----
-ps | display your currently active processes
-ps -ax | display all processes currently active on a system
-top | display all running processes
-kill pid | kill process id pid
-killall proc | kill all processes named proc *
-bg | lists stopped or background jobs; resume a stopped job in the background
-fg | brings the most recent job to foreground
-fg n | brings job n to the foreground
+**ps** | display your currently active processes
+**ps** -ax | display all processes currently active on a system
+**top** | display all running processes
+**kill** pid | kill process id pid
+**killall** proc | kill all processes named proc *
+**bg** | lists stopped or background jobs; resume a stopped job in the background
+**fg** | brings the most recent job to foreground
+**fg** n | brings job n to the foreground
 
-# Command Chaining Syntax 
+## Command Chaining Syntax
 
 Command Line | Description
 ---- | -----
 *op1* && *op2* | execute *op1* and then *op2* immediately after *op1* completes, if and only if *op1* returns zero (0)
 *op1* \|\| *op2* | execute *op1*, and then *op2* immediately after *op1* completes, if and only if *op1* returned non-zero
 
-# Privileges
+## Privileges
 
 Command Line | Description
 --------|--------
 **sudo** *command* | run a command as a root user
 **sudo** su | switch to a shell which is elevated to root user
 **sudo** -s | open a root user shell (same as above)
-**sudo** -s -u *username* | open a user shell as *username* 
+**sudo** -s -u *username* | open a user shell as *username*
 **sudo** -k | forget sudo passwords (prevents sudo privileges persisting in the current shell. e.g. remote assistance)
 **gksudo** *command* | opens a gnome sudo dialog
 **kdesudo** *command* | opens a kde sudo dialog
@@ -143,15 +146,15 @@ Command Line | Description
 **chmod** *permissions* *file* | change to rights on a specific file or directory.<br>See '*man chmod*' for permissions
 **chown** *user*:*group* *file* | change ownership of a specific file or directory, to a provided user and/or group. See '*man chown*'
 
-# Display
+## Display
 
 Command Line | Description
 --------|--------
 **sudo** /etc/init.d/gdm restart | restart X window manager and display login
 **sudo** /etc/init.d/kdm restart | restart X window manager and display login
-(*file*) /etc/X11/xorg.conf | X11 display configuration 
+(*file*) /etc/X11/xorg.conf | X11 display configuration
 
-# System Services
+## System Services
 
 **sudo start** *service*
 **sudo stop** *service*
@@ -160,13 +163,13 @@ Command Line | Description
 /etc/init.d/*service* stop | stop *service*
 /etc/init.d/*service* status | display *service*
 /etc/init.d/*service* restart | restart *service*
-runlevel | gets the current runlevel
+**runlevel** | gets the current runlevel
 
-# Network
+## Network
 
 Command Line | Description
 --------|--------
-**ifconfig** | show network details 
+**ifconfig** | show network details
 **iwconfig** | show wireless information
 **sudo iwlist** scan | scan and list wireless networks
 **sudo /etc/init.d/networking** restart | restart network, used for manual configuration
@@ -183,40 +186,45 @@ Command Line | Description
 **sudo systemd-resolve** --flush-caches | flush dns caches
 **sudo systemd-resolve** --statistics | validate dns cache size
 **traceroute** *host* | traces the route to a host machine
+**sudo netstat** -plnt | list active listening sockets with PID
+**sudo netstat** -plnt \| grep ':80' | list active listening sockets with PID on port 80
 
-# Firewall
+## Firewall
 
 Command Line | Description
 --------|--------
 **ufw** enable | enable firewall
 **ufw** disable | disable firewall
 **ufw** default allow | allow all connections by default
-**ufw** default deny | deny all connections by default 
+**ufw** default deny | deny all connections by default
 **ufw** status | display current firewall status and rules
-**uwf** allow *port* | allow *port* 
+**uwf** allow *port* | allow *port*
 **ufw** deny *port* | deny *port*
 **ufw** deny from *ip* | deny specified ip address
 
-# Secure Shell - SSH
+## Secure Shell - SSH
 
 Command Line | Description
 --------|--------
 **ssh** *user*@*host* | connect to host as user
 **ssh** -p port *user*@*host* | connect to host on port *port* as user
+**ssh** -R listening_port:localhost:22 remote_user@remote_host -i key.pem | Enable SSH Tunnelling on a machine, establishing communication through which a reverse connection can be made.
+**ssh** listening_user@localhost -p listening_port | Connect to listening SSH Reverse Tunnel
 **ssh-copy-id** *user*@*host* | add your key to host for user to enable a keyed or passwordless login
 **sshfs** *user*@*host*:*/remote/path* /*local*/*path* | mount a remote path to a local path using ssh
 
-# Package Management 
+## Package Management
+
 Command Line | Description
 --------|--------
 **apt-get** update | retrieve list of available packages
-**apt-get** upgrade | upgrade all packages 
+**apt-get** upgrade | upgrade all packages
 **apt-get** dist-upgrade | upgrade Ubuntu version
 **apt-get** install *pkg* | install package *pkg*
 **apt-get** purge *pkg* | uninstall package *pkg*
 **apt-get** autoremove | remove all obsolete packages
-**apt-get** -f install | fix broken packages 
-**dpkg** --configure -a | fix broken packages 
+**apt-get** -f install | fix broken packages
+**dpkg** --configure -a | fix broken packages
 (*file*) /etc/apt/sources.list | all apt packages configuration
 **snap** find *package* | searches for a snap package named *package*
 **sudo snap** install *package* | installs a snap package named *package*
