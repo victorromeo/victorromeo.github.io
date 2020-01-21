@@ -75,6 +75,18 @@ Command Line | Description
 *command* | **grep** *pattern* | search for pattern in the output of command
 **locate** *file* | find all instances of file
 
+## Compare
+
+Package | Tools
+---|----
+`sudo apt install diffutils` | cpm diff diff3 sdiff
+
+Command Line | Description
+---- | -----
+**diff** [options] from_file to_file | Compare 2 files
+**diff3** [options] file_1 file_2 file_3 | Compare 3 files
+**sdiff** -o out_file [options] from_file to_file | Compare 2 files and merge interactively
+
 ## System Details
 
 Command Line | Description
@@ -167,6 +179,11 @@ Command Line | Description
 
 ## Network
 
+Package | Utilities
+---|---
+`sudo apt install wireless-tools` | iwconfig iwlist iwspy iwpriv ifrename
+`sudo apt install net-tools` | ifconfig hostname domainname nmap arp rarp netstat iptunnel ipmaddr route dnsdomainname nisdomainname ypdomainname slattach
+
 Command Line | Description
 --------|--------
 **ifconfig** | show network details
@@ -188,6 +205,7 @@ Command Line | Description
 **traceroute** *host* | traces the route to a host machine
 **sudo netstat** -plnt | list active listening sockets with PID
 **sudo netstat** -plnt \| grep ':80' | list active listening sockets with PID on port 80
+**nmap** -sP 192.168.2.0/24 | List all devices on the network
 
 ## Firewall
 
