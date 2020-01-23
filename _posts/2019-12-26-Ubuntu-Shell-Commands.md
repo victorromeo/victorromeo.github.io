@@ -108,6 +108,32 @@ Command Line | Description
 **lsusb** | list usb devices
 **dmesg** | show recent system log messages
 
+## Disk
+
+Command Line | Description
+----|----
+**df** | List all file systems and display the free disk space, and used disk space for each
+**df** /path | Find free disk space on the device a path
+`echo 'Hello, World!' > /dev/device_path` | Used while device is unmounted, will permit the device to be used to persist data even without a file system. <br>*! This is a destructive operation!*
+`head -n 1 /dev/sdx` | Read from an unmounted device, even when the device has no filesystem.
+sudo **mount** */dev/device_path* */path/mount_point* | Mounts a device on a mount point
+sudo **umount** */dev/device_path* | Unmounts a device using the device path. *Typically /dev/device_name* e.g. /dev/sd`[a-z]` for disks and /dev/sd`[a-z][0-9]` for partitions
+sudo **umount** */path/mount_point* | Unmounts a device using the mount point.
+**dd** if=*/dev/device_path* of=*output_image_path*.img | Backup a device, creating an image of disk device. <br> _!! This is a destructive method, overwriting the output image path !!_
+**dd** if=*input_image_page*.img of=*/dev/device_path* | Restore a device, using an image to overwrite the current device content. <br> _!! This is a destructive method, erasing the device !!_
+1. `losetup -f` then <br> 2. `losetup /dev/loop[0-9] /image/path.img` then <br> 3. `mount /dev/loop[0-9] /mnt/path` | Mount an image file (in 3 steps).<br>1.Find the next available loop device <br> 2. Associate loop device with image file <br> 3. mount loop device at mount point
+1. `losetup -f` then <br> 2. `losetup -P /dev/loop[0-9] /image/path.img` then <br> 3. `mount /dev/loop[0-9]p[0-9] /mnt/path` | Mount a partition from an image file (in 3 steps).<br>1.Find the next available loop device <br> 2. Associate loop device with image file, where each partition will be given a loop device name like /dev/loop`[0-9]`p`[0-9]` <br> 3. Mount loop device (representing a single partition) at mount point
+1. `umount /mnt/path` <br> 2. `losetup -d /dev/loop[0-9]` | Unmount a device (in 2 steps). <br>1. Unmount the mount path<br>2. Disassociate the loop device from any current image file.
+**lsblk** | List block devices, also showing mount points and volume sizes
+sudo **fdisk** -l | Lists <br>1. disks, getting the device name, disk label, size, sectors, units, sector sizes and i/o sizes<br>2. Partitions and their device name, Boot flag, Start Offset, End Offset, Sectors, Size, Id, Type
+sudo **fdisk** -l \| grep '^Disk /' | List all disks, including loop disks
+**fsck** */dev/device_path* | *!Use while unmounted only!* <br>Checks a disk for consistency errors, and automatically attempts to resolve the errors found
+**fdisk** */dev/path* | Partition a device, interactively. <br>**m** - print help<br>**p** - print partition table<br>**n** - create a new partition table<br>**d** - delete a partition<br>**q** - quit without saving changes<br>**w** - write new partition table to the device and exit
+**mkfs.ext3** */dev/device_path[0-9]* | Format the device with a EXT3 file system type
+**mkfs.ext4** -L myExt4Drive /dev/sdx1 | Format the device with a EXT4 file system type. Flag -L adds a label for the file system. *May be inappropriate for portable devices, as it maintains file permissions*
+**mkfs.exfat** -n myExFatDrive */dev/sdx1* | Formats the device /dev/sdx1 and makes a exFAT file system on the device
+sudo **e2label** */dev/sda1* *new_label* | Updates the current label on the disk partition
+
 ## Compression
 
 Command Line | Description
