@@ -75,6 +75,10 @@ Command Line | Description
 **grep** -iRl 'pattern' *dir* | searches recursively for a literal in files within dir, listing file names only
 *command* | **grep** *pattern* | search for pattern in the output of command
 **locate** *file* | find all instances of file
+**find** . -name *filename.txt* | searches for files called *filename.txt* in current directory and subdirectories
+**find** *path* -name *\*.txt* | searches for any text files with txt extension in path and it's subdirectories
+**find** *path* -type f -empty | searches for empty files
+**find** *path* -user *username* -mtime -7 -name *.txt | searches for txt files modified by user in the last 7 days. <br>*Note: -7 means today minus 7, not an argument flag to find itself.*
 
 ## Compare
 
