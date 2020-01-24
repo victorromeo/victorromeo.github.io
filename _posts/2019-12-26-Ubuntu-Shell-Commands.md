@@ -72,6 +72,7 @@ Command Line | Description
 ---- | -----
 **grep** pattern files | search for pattern in files
 **grep** -r pattern dir | search recursively for pattern in dir
+**grep** -iRl 'pattern' *dir* | searches recursively for a literal in files within dir, listing file names only
 *command* | **grep** *pattern* | search for pattern in the output of command
 **locate** *file* | find all instances of file
 
