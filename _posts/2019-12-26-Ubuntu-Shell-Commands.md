@@ -133,6 +133,8 @@ sudo **fdisk** -l \| grep '^Disk /' | List all disks, including loop disks
 **mkfs.ext4** -L myExt4Drive /dev/sdx1 | Format the device with a EXT4 file system type. Flag -L adds a label for the file system. *May be inappropriate for portable devices, as it maintains file permissions*
 **mkfs.exfat** -n myExFatDrive */dev/sdx1* | Formats the device /dev/sdx1 and makes a exFAT file system on the device
 sudo **e2label** */dev/sda1* *new_label* | Updates the current label on the disk partition
+`find /path/to/folder -size 0 -type f` | List all files with zero (0) file length and delete them. Note: `-print` flag may be required on some OS.
+`sudo find /path/to/folder -size 0 -type f -delete` | Remove all files with zero (0) file length and delete them. The sudo elevation is required for deletions on protected file systems.
 
 ## Compression
 
