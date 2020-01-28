@@ -239,6 +239,8 @@ Command Line | Description
 **sudo netstat** -plnt | list active listening sockets with PID
 **sudo netstat** -plnt \| grep ':80' | list active listening sockets with PID on port 80
 **nmap** -sP 192.168.2.0/24 | List all devices on the network
+**nmcli** dev wifi | View a list of the available WiFi networks, transfer rate, signal strength and security
+**wpa_passphrase** *ssid* *passkey* >> wpa_supplicant.conf | **Note: Suitable for a Raspberry Pi, not Ubuntu** appends a new SSID and passkey combination to the wpa_supplicant.conf, using encryption to store the passkey in an form which avoids plain text
 
 ## Firewall
 
@@ -283,3 +285,32 @@ Command Line | Description
 **sudo snap** refresh *package* | attempt to get latest version of snap package
 **sudo snap** refresh | update all snap packages
 **sudo snap** revert *package* | rollback to the previous version of a snap package
+
+## Snippets
+
+### Reverse SSH Tunnel
+
+To enable a persistent SSH Reverse Tunnel, use **autossh** rather than ssh as it will attempt to reestablish the tunnel open, if the connection is lost.
+
+*Prerequisite:* `sudo apt install autossh`
+
+1. Create and add the following to `/etc/systemd/system/autossh.service`
+  *Note: the argument flags `-t -t` ensures the SSH pseudo terminal is not rejected*
+
+    ```bash
+    [Unit]
+    Description=Auto Reverse SSH
+    Requires=systemd-networkd-wait-online.service
+    After=systemd-networkd-wait-online.service
+    [Service]
+    ExecStart=/path/to/autossh -i /path/to/key.pem -R <port>:localhost:22 ubuntu@<remote.fqdn.host> -t -t
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+2. Enable using `sudo systemctl enable autossh.service` to ensure it starts on the next boot
+
+3. Start the service immediately, rather than wait for the next boot using `sudo systemctl start autossh.service`
+  *Note: the `.service` is not mandatory here and can be dropped but rather used to demonstrate what is really being done by systemctl*
+
+4. Check the status using `systemctl status autossh` to ensure that the service has correctly established the connection.  Look for a line beginning with `Active: active (running)` to indicate succes. If a failure has occurred, the easiest way to find it is using the command `journalctl | grep autossh`.
