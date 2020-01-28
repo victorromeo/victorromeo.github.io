@@ -314,3 +314,19 @@ To enable a persistent SSH Reverse Tunnel, use **autossh** rather than ssh as it
   *Note: the `.service` is not mandatory here and can be dropped but rather used to demonstrate what is really being done by systemctl*
 
 4. Check the status using `systemctl status autossh` to ensure that the service has correctly established the connection.  Look for a line beginning with `Active: active (running)` to indicate succes. If a failure has occurred, the easiest way to find it is using the command `journalctl | grep autossh`.
+
+### Shell Alias shortcuts in .profile
+
+If there are operations which are regularly typed into the shell or which are complex, specific and/or verbose, you can add an alias into your **.profile** file.
+
+1. Add a record to your ~/.profile file as follows
+
+  ```bash
+  alias pstree="ps axjf"
+  ```
+
+2. Log out of the account, `exit` and log back in again
+
+3. In command shell type `pstree` to see the system process in a hierarchical tree
+
+4. To see all aliases which are defined just type `alias`
