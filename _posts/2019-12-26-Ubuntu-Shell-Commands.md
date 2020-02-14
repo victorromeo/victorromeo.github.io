@@ -72,8 +72,13 @@ Command Line | Description
 ---- | -----
 **grep** pattern files | search for pattern in files
 **grep** -r pattern dir | search recursively for pattern in dir
+**grep** -iRl 'pattern' *dir* | searches recursively for a literal in files within dir, listing file names only
 *command* | **grep** *pattern* | search for pattern in the output of command
 **locate** *file* | find all instances of file
+**find** . -name *filename.txt* | searches for files called *filename.txt* in current directory and subdirectories
+**find** *path* -name *\*.txt* | searches for any text files with txt extension in path and it's subdirectories
+**find** *path* -type f -empty | searches for empty files
+**find** *path* -user *username* -mtime -7 -name *.txt | searches for txt files modified by user in the last 7 days. <br>*Note: -7 means today minus 7, not an argument flag to find itself.*
 
 ## Compare
 
@@ -107,6 +112,34 @@ Command Line | Description
 **which** *app* | show which app will be run by default
 **lsusb** | list usb devices
 **dmesg** | show recent system log messages
+
+## Disk
+
+Command Line | Description
+----|----
+**df** | List all file systems and display the free disk space, and used disk space for each
+**df** /path | Find free disk space on the device a path
+`echo 'Hello, World!' > /dev/device_path` | Used while device is unmounted, will permit the device to be used to persist data even without a file system. <br>*! This is a destructive operation!*
+`head -n 1 /dev/sdx` | Read from an unmounted device, even when the device has no filesystem.
+sudo **mount** */dev/device_path* */path/mount_point* | Mounts a device on a mount point
+sudo **umount** */dev/device_path* | Unmounts a device using the device path. *Typically /dev/device_name* e.g. /dev/sd`[a-z]` for disks and /dev/sd`[a-z][0-9]` for partitions
+sudo **umount** */path/mount_point* | Unmounts a device using the mount point.
+**dd** if=*/dev/device_path* of=*output_image_path*.img | Backup a device, creating an image of disk device. <br> _!! This is a destructive method, overwriting the output image path !!_
+**dd** if=*input_image_page*.img of=*/dev/device_path* | Restore a device, using an image to overwrite the current device content. <br> _!! This is a destructive method, erasing the device !!_
+1. `losetup -f` then <br> 2. `losetup /dev/loop[0-9] /image/path.img` then <br> 3. `mount /dev/loop[0-9] /mnt/path` | Mount an image file (in 3 steps).<br>1.Find the next available loop device <br> 2. Associate loop device with image file <br> 3. mount loop device at mount point
+1. `losetup -f` then <br> 2. `losetup -P /dev/loop[0-9] /image/path.img` then <br> 3. `mount /dev/loop[0-9]p[0-9] /mnt/path` | Mount a partition from an image file (in 3 steps).<br>1.Find the next available loop device <br> 2. Associate loop device with image file, where each partition will be given a loop device name like /dev/loop`[0-9]`p`[0-9]` <br> 3. Mount loop device (representing a single partition) at mount point
+1. `umount /mnt/path` <br> 2. `losetup -d /dev/loop[0-9]` | Unmount a device (in 2 steps). <br>1. Unmount the mount path<br>2. Disassociate the loop device from any current image file.
+**lsblk** | List block devices, also showing mount points and volume sizes
+sudo **fdisk** -l | Lists <br>1. disks, getting the device name, disk label, size, sectors, units, sector sizes and i/o sizes<br>2. Partitions and their device name, Boot flag, Start Offset, End Offset, Sectors, Size, Id, Type
+sudo **fdisk** -l \| grep '^Disk /' | List all disks, including loop disks
+**fsck** */dev/device_path* | *!Use while unmounted only!* <br>Checks a disk for consistency errors, and automatically attempts to resolve the errors found
+**fdisk** */dev/path* | Partition a device, interactively. <br>**m** - print help<br>**p** - print partition table<br>**n** - create a new partition table<br>**d** - delete a partition<br>**q** - quit without saving changes<br>**w** - write new partition table to the device and exit
+**mkfs.ext3** */dev/device_path[0-9]* | Format the device with a EXT3 file system type
+**mkfs.ext4** -L myExt4Drive /dev/sdx1 | Format the device with a EXT4 file system type. Flag -L adds a label for the file system. *May be inappropriate for portable devices, as it maintains file permissions*
+**mkfs.exfat** -n myExFatDrive */dev/sdx1* | Formats the device /dev/sdx1 and makes a exFAT file system on the device
+sudo **e2label** */dev/sda1* *new_label* | Updates the current label on the disk partition
+`find /path/to/folder -size 0 -type f` | List all files with zero (0) file length and delete them. Note: `-print` flag may be required on some OS.
+`sudo find /path/to/folder -size 0 -type f -delete` | Remove all files with zero (0) file length and delete them. The sudo elevation is required for deletions on protected file systems.
 
 ## Compression
 
@@ -206,6 +239,8 @@ Command Line | Description
 **sudo netstat** -plnt | list active listening sockets with PID
 **sudo netstat** -plnt \| grep ':80' | list active listening sockets with PID on port 80
 **nmap** -sP 192.168.2.0/24 | List all devices on the network
+**nmcli** dev wifi | View a list of the available WiFi networks, transfer rate, signal strength and security
+**wpa_passphrase** *ssid* *passkey* >> wpa_supplicant.conf | **Note: Suitable for a Raspberry Pi, not Ubuntu** appends a new SSID and passkey combination to the wpa_supplicant.conf, using encryption to store the passkey in an form which avoids plain text
 
 ## Firewall
 
@@ -250,3 +285,48 @@ Command Line | Description
 **sudo snap** refresh *package* | attempt to get latest version of snap package
 **sudo snap** refresh | update all snap packages
 **sudo snap** revert *package* | rollback to the previous version of a snap package
+
+## Snippets
+
+### Reverse SSH Tunnel
+
+To enable a persistent SSH Reverse Tunnel, use **autossh** rather than ssh as it will attempt to reestablish the tunnel open, if the connection is lost.
+
+*Prerequisite:* `sudo apt install autossh`
+
+1. Create and add the following to `/etc/systemd/system/autossh.service`
+  *Note: the argument flags `-t -t` ensures the SSH pseudo terminal is not rejected*
+
+    ```bash
+    [Unit]
+    Description=Auto Reverse SSH
+    Requires=systemd-networkd-wait-online.service
+    After=systemd-networkd-wait-online.service
+    [Service]
+    ExecStart=/path/to/autossh -i /path/to/key.pem -R <port>:localhost:22 ubuntu@<remote.fqdn.host> -t -t
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+2. Enable using `sudo systemctl enable autossh.service` to ensure it starts on the next boot
+
+3. Start the service immediately, rather than wait for the next boot using `sudo systemctl start autossh.service`
+  *Note: the `.service` is not mandatory here and can be dropped but rather used to demonstrate what is really being done by systemctl*
+
+4. Check the status using `systemctl status autossh` to ensure that the service has correctly established the connection.  Look for a line beginning with `Active: active (running)` to indicate succes. If a failure has occurred, the easiest way to find it is using the command `journalctl | grep autossh`.
+
+### Shell Alias shortcuts in .profile
+
+If there are operations which are regularly typed into the shell or which are complex, specific and/or verbose, you can add an alias into your **.profile** file.
+
+1. Add a record to your ~/.profile file as follows
+
+  ```bash
+  alias pstree="ps axjf"
+  ```
+
+2. Log out of the account, `exit` and log back in again
+
+3. In command shell type `pstree` to see the system process in a hierarchical tree
+
+4. To see all aliases which are defined just type `alias`
