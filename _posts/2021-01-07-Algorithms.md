@@ -2,7 +2,7 @@
 layout: post
 title: "Algorithms"
 date: 2021-01-07
-tags: compiler tree ast cst transpiler
+tags: algorithm sort search graph set array index quick heuristic prune
 image: https://images.unsplash.com/photo-1547223487-c0bbe3535bb7
 thumb: https://images.unsplash.com/photo-1547223487-c0bbe3535bb7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjV8fG1hemV8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60
 imagecredit: https://unsplash.com/@victor_g
