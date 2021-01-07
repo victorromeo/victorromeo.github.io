@@ -35,6 +35,8 @@
         "pipenv",
         "storeid",
         "subfolders",
+        "transpiler",
+        "transpilers",
         "varbinary",
         "virtualenv"
     ]
