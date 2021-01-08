@@ -2,7 +2,7 @@
 layout: post
 title: "Algorithms"
 date: 2021-01-07
-tags: algorithm sort search graph set array index quick heuristic prune
+tags: algorithm sort search graph set array index quick heuristic prune cluster compress encrypt
 image: https://images.unsplash.com/photo-1547223487-c0bbe3535bb7
 thumb: https://images.unsplash.com/photo-1547223487-c0bbe3535bb7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjV8fG1hemV8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60
 imagecredit: https://unsplash.com/@victor_g
@@ -50,6 +50,19 @@ Algorithm efficiency dramatically effects software success. This guide assists i
     - [Breadth First Search](#breadth-first-search)
     - [Depth First Search](#depth-first-search)
     - [A* Star Search](#a-star-search)
+- [Genetic Algorithms](#genetic-algorithms)
+- [Constraint Satisfaction Problems](#constraint-satisfaction-problems)
+  - [CSP Example using Sudoku](#csp-example-using-sudoku)
+  - [CSP solutions](#csp-solutions)
+- [Clustering Algorithms](#clustering-algorithms)
+  - [K-Means Clustering](#k-means-clustering)
+  - [K-Nearest Neighbor Clustering](#k-nearest-neighbor-clustering)
+  - [Means Shift](#means-shift)
+  - [Density Based Spatial Clustering (DBSCAN)](#density-based-spatial-clustering-dbscan)
+  - [Expectation Maximization Clustering using Gaussian Mixture Models (GMMs)](#expectation-maximization-clustering-using-gaussian-mixture-models-gmms)
+  - [Agglomerative Hierarchical Clustering](#agglomerative-hierarchical-clustering)
+- [Compression Algorithms](#compression-algorithms)
+- [Encryption Algorithms](#encryption-algorithms)
 - [Algorithm libraries](#algorithm-libraries)
 
 ## Data Storage considerations
@@ -373,12 +386,134 @@ A* is an informed search algorithm, or a best-first search, meaning that it is f
 
 ![A*](https://upload.wikimedia.org/wikipedia/commons/5/5d/Astar_progress_animation.gif)
 
+## Genetic Algorithms
+
+Genetic Algorithms are derived from traditional biological processes of genetic mixing, through instruction and variable selection, crossover, and mutation.  Due to their ability to solve traditionally hard problems, without using human deductive reasoning, they are often used when other techniques have failed to achieve an appropriate solution.  Conceptually, in this domain, programs are able to write themselves, as a satisfactory measure is inbuilt to determine when a solution achieves a goal.  In addition, genetic algorithms are only really practical when operating in parallel with a pool simultaneous algorithms competing to solve the solution.
+
+## Constraint Satisfaction Problems
+
+Constraint Satisfaction Problems (CSPs) are a broad strategy to define the conditions under which a problem can be deemed solved.
+
+- Variables - The contextual players of the problem, 
+- Domains - The contextual options which govern the players
+- Constraints - The contextual limitations placed upon the players and domain, which must be satisfied to achieve a solution to the problem
+
+### CSP Example using Sudoku
+
+In classic sudoku, the objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that compose the grid (also called "boxes", "blocks", or "regions") contain all of the digits from 1 to 9. The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a single solution.
+
+Variables 
+- The 81 cells within the 9x9 grid
+Domain 
+- The numbers from 1 to 9, and empty
+- The 9 rows
+- The 9 columns
+- The 9 3x3 sub-grids
+Constraints
+- That each row must contain the numbers 1 through 9
+- That each column must contain the numbers 1 through 9
+- That each 3x3 sub-grid must contain the numbers 1 through 9
+- That any cell already containing a value in the supplied partially completed grid, is fixed
+- That all 81 cells must contain a value (redundant as covered already by the above constraints)
+
+Note: It is intentional to word the constraints all in positive language, however it is possible to write the constraints in negative constraints also.  By writing them all as either positive conditions, or negative conditions, the implementation is more consistent.
+
+### CSP solutions
+
+The primary problem is finding the state of a set of variables within the domains which satisfy the constraints.
+
+Options to tackle CSPs typically require a couple of core features.
+- Data structures to store the lists of variables, domains (and probably constraints also)
+- Operations which iterate over possible solutions, but stop when solution is solved
+- Operations which evaluate each and all of the constraints, for a given set of variables and domain
+- Optimizations
+  - Operations which recognize when a path to seek a solution is a dead end (Back tracking)
+  - Operations which can forward search for easy solutions when nearly complete (Look ahead)
+
+## Clustering Algorithms
+
+Clustering algorithms attempt to detect similarity between values within data sets, such that automated grouping can be achieved.  Clustering algorithms are used extensively in machine learning, particularly in unsupervised learning or data set inspection.
+
+Clustering algorithm are useful for classifying groups of points, and also for finding outliers in the data set.
+
+### [K-Means Clustering](https://en.wikipedia.org/wiki/K-means_clustering)
+
+K-Means is one of the most trivial clustering algorithms and is easy to implement.
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/K-means_convergence.gif/220px-K-means_convergence.gif)
+
+1. Select K random points as centroids in the data set range
+2. For each data set point, assign the data set point to the nearest centroid (using the squared Euclidean distance)
+3. Update the centroid position, such that the new position is in the mean of the assigned data points
+4. Repeat steps 2 and 3 until convergence occurs and the centroids no longer move
+
+Issues: 
+- Not guaranteed to find optimum solution
+- Performance dependent on 
+  - the number of K
+  - the number of data set points
+  - initial position of starting points
+  - the rate of movement into convergence locations
+  - the detection of convergence
+
+### K-Nearest Neighbor Clustering
+
+1. Load the data
+2. Initialize K to your chosen number of neighbors
+3. For each example in the data
+    1. Calculate the distance between the query example and the current example from the data.
+        i.e. Distance each point between neighbors.
+    2. Add the distance and the index of the example to an ordered collection
+4. Sort the ordered collection of distances and indices from smallest to largest (in ascending order) by the distances
+5. Pick the first K entries from the sorted collection
+6. Get the labels of the selected K entries
+7. If regression, return the mean of the K labels
+8. If classification, return the mode of the K labels
+
+Issues: 
+- Slow as the number of points increases
+- Improvements can be made by limiting the range of search to find neighbors
+
+### Means Shift
+
+Means Shift algorithm is used to achieve clustering in a non-circular solution.
+
+When using means shift, each data point slowly progresses over a gradient toward local means.
+
+![](https://media.geeksforgeeks.org/wp-content/uploads/20190508162515/anigif.gif)
+![](https://miro.medium.com/max/432/1*vyz94J_76dsVToaa4VG1Zg.gif)
+
+1. First, calculate the Kernel Density Estimate for the data points.
+2. Shift each point toward the local maxima, from the KDE.
+
+Benefits:
+- Highly resilient to outliers in the data set
+- Great at deducing the number of clusters
+
+Issues:
+- Not guaranteed to result in an optimum result
+- Calculating the KDE can be costly
+
+### Density Based Spatial Clustering (DBSCAN)
+
+### Expectation Maximization Clustering using Gaussian Mixture Models (GMMs)
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/ClusterAnalysis_Mouse.svg/450px-ClusterAnalysis_Mouse.svg.png)
+
+### Agglomerative Hierarchical Clustering 
+
+## Compression Algorithms
+
+## Encryption Algorithms
+
 ## Algorithm libraries
 
 - C/C++
   - [Boost](https://www.boost.org/) - *[Documentation 1.75.0](https://www.boost.org/doc/libs/1_75_0/)*
   - [CGAL](https://www.cgal.org/) - *[Documentation](https://doc.cgal.org/latest/Manual/packages.html)*
   - [LEDA](https://www.algorithmic-solutions.com/index.php/products/leda-for-c) - *[Documentation](http://www.algorithmic-solutions.info/leda_manual/MANUAL.html)*
+  - [ALGLIB](https://www.alglib.net/) - *[Documentation](https://www.alglib.net/docs.php)*
+  - [MLPack Machine Learning algorithms](https://mlpack.org/) 
   - [Algorithm list on cppreference.com](https://en.cppreference.com/w/cpp/algorithm)
   - [C++ STL examples on GeeksforGeeks.org](https://www.geeksforgeeks.org/algorithms-library-c-stl/)
   - [C++ STL articles on fluentcpp.com](http://www.fluentcpp.com/STL/)
