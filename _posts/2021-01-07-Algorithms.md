@@ -386,6 +386,8 @@ A* is an informed search algorithm, or a best-first search, meaning that it is f
 
 ![A*](https://upload.wikimedia.org/wikipedia/commons/5/5d/Astar_progress_animation.gif)
 
+[Further Reading for Goal Oriented Action Planning](/search?query=GOAP)
+
 ## Genetic Algorithms
 
 Genetic Algorithms are derived from traditional biological processes of genetic mixing, through instruction and variable selection, crossover, and mutation.  Due to their ability to solve traditionally hard problems, without using human deductive reasoning, they are often used when other techniques have failed to achieve an appropriate solution.  Conceptually, in this domain, programs are able to write themselves, as a satisfactory measure is inbuilt to determine when a solution achieves a goal.  In addition, genetic algorithms are only really practical when operating in parallel with a pool simultaneous algorithms competing to solve the solution.
