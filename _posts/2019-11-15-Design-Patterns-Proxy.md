@@ -42,7 +42,7 @@ public class Proxy : IEntity {
 
 ## Use
 
-An example here is a SocketManager, which can be implemented as a Singleton to prevent the accidental duplication of sockets when created, by separate functions which need a Socket.
+An example here is an ImageProxy which securely manages the Image content, preventing compute resources from unnecessary work.
 
 ```csharp 
 
