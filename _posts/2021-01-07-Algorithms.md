@@ -11,69 +11,80 @@ type: article
 
 Algorithm efficiency dramatically effects software success. This guide assists in selecting the correct algorithm for a task.
 
-- [Data Storage considerations](#data-storage-considerations)
-  - [Mutable vs Immutable](#mutable-vs-immutable)
-  - [Stack vs Heap](#stack-vs-heap)
-  - [Arrays](#arrays)
-  - [Sets](#sets)
-  - [Queues](#queues)
-    - [FIFO - First In First Out](#fifo---first-in-first-out)
-    - [LIFO - Last In First Out](#lifo---last-in-first-out)
-  - [Dictionaries](#dictionaries)
-  - [Trees](#trees)
-    - [Binary Search Tree](#binary-search-tree)
-    - [Red Black Tree](#red-black-tree)
-- [Sorting algorithms](#sorting-algorithms)
-  - [Insert Sort](#insert-sort)
-  - [Selection Sort](#selection-sort)
-  - [Bubble Sort](#bubble-sort)
-  - [Quick Sort](#quick-sort)
-  - [Heap Sort](#heap-sort)
-  - [Merge Sort](#merge-sort)
-- [Searching algorithms](#searching-algorithms)
-  - [Indexes](#indexes)
-    - [Forward Indexes](#forward-indexes)
-    - [Inverted Index](#inverted-index)
-    - [Reverse Index](#reverse-index)
-  - [Database Pages](#database-pages)
-  - [Search Algorithm concepts](#search-algorithm-concepts)
-    - [Brute Force Search (No Knowledge)](#brute-force-search-no-knowledge)
-    - [Backward Induction Search](#backward-induction-search)
-    - [Heuristics Search (Partial Knowledge))](#heuristics-search-partial-knowledge)
-    - [Local Consistency and Constraint Propagation](#local-consistency-and-constraint-propagation)
-  - [Combinatorial Search](#combinatorial-search)
-    - [Alpha-Beta Pruning](#alpha-beta-pruning)
-    - [Branch and Bound](#branch-and-bound)
-    - [MinMax](#minmax)
-- [Graphs)](#graphs)
-  - [Graph Search](#graph-search)
-    - [Breadth First Search](#breadth-first-search)
-    - [Depth First Search](#depth-first-search)
-    - [A* Star Search](#a-star-search)
-- [Genetic Algorithms](#genetic-algorithms)
-- [Constraint Satisfaction Problems](#constraint-satisfaction-problems)
-  - [CSP Example using Sudoku](#csp-example-using-sudoku)
-  - [CSP solutions](#csp-solutions)
-- [Clustering Algorithms](#clustering-algorithms)
-  - [K-Means Clustering](#k-means-clustering)
-  - [K-Nearest Neighbor Clustering](#k-nearest-neighbor-clustering)
-  - [Means Shift](#means-shift)
-  - [Density Based Spatial Clustering (DBSCAN)](#density-based-spatial-clustering-dbscan)
-  - [Expectation Maximization Clustering using Gaussian Mixture Models (GMMs)](#expectation-maximization-clustering-using-gaussian-mixture-models-gmms)
-  - [Agglomerative Hierarchical Clustering](#agglomerative-hierarchical-clustering)
-- [Compression Algorithms](#compression-algorithms)
-- [Encryption Algorithms](#encryption-algorithms)
-- [Algorithm libraries](#algorithm-libraries)
+- [1. Data Storage considerations](#1-data-storage-considerations)
+  - [1.1. Mutable vs Immutable](#11-mutable-vs-immutable)
+  - [1.2. Stack vs Heap](#12-stack-vs-heap)
+  - [1.3. Arrays](#13-arrays)
+  - [1.4. Sets](#14-sets)
+  - [1.5. Queues](#15-queues)
+    - [1.5.1. FIFO - First In First Out](#151-fifo---first-in-first-out)
+    - [1.5.2. LIFO - Last In First Out](#152-lifo---last-in-first-out)
+  - [1.6. Dictionaries](#16-dictionaries)
+  - [1.7. Trees](#17-trees)
+    - [1.7.1. Binary Search Tree](#171-binary-search-tree)
+    - [1.7.2. Red Black Tree](#172-red-black-tree)
+- [2. Sorting algorithms](#2-sorting-algorithms)
+  - [2.1. Insert Sort](#21-insert-sort)
+  - [2.2. Selection Sort](#22-selection-sort)
+  - [2.3. Bubble Sort](#23-bubble-sort)
+  - [2.4. Quick Sort](#24-quick-sort)
+  - [2.5. Heap Sort](#25-heap-sort)
+  - [2.6. Merge Sort](#26-merge-sort)
+- [3. Searching algorithms](#3-searching-algorithms)
+  - [3.1. Indexes](#31-indexes)
+    - [3.1.1. Forward Indexes](#311-forward-indexes)
+    - [3.1.2. Inverted Index](#312-inverted-index)
+    - [3.1.3. Reverse Index](#313-reverse-index)
+  - [3.2. Database Pages](#32-database-pages)
+  - [3.3. Search Algorithm concepts](#33-search-algorithm-concepts)
+    - [3.3.1. Brute Force Search (No Knowledge)](#331-brute-force-search-no-knowledge)
+    - [3.3.2. Backward Induction Search](#332-backward-induction-search)
+    - [3.3.3. Heuristics Search (Partial Knowledge))](#333-heuristics-search-partial-knowledge)
+    - [3.3.4. Local Consistency and Constraint Propagation](#334-local-consistency-and-constraint-propagation)
+  - [3.4. Combinatorial Search](#34-combinatorial-search)
+    - [3.4.1. Alpha-Beta Pruning](#341-alpha-beta-pruning)
+    - [3.4.2. Branch and Bound](#342-branch-and-bound)
+    - [3.4.3. MinMax](#343-minmax)
+- [4. Graphs)](#4-graphs)
+  - [4.1. Graph Search](#41-graph-search)
+    - [4.1.1. Breadth First Search](#411-breadth-first-search)
+    - [4.1.2. Depth First Search](#412-depth-first-search)
+    - [4.1.3. A* Star Search](#413-a-star-search)
+- [5. Divide and Conquer vs. Dynamic Programming](#5-divide-and-conquer-vs-dynamic-programming)
+  - [5.1. Optimal Substructure](#51-optimal-substructure)
+  - [5.2. Overlapping Sub-problems](#52-overlapping-sub-problems)
+  - [5.3. Divide and Conquer](#53-divide-and-conquer)
+  - [5.4. Dynamic Programming](#54-dynamic-programming)
+- [6. Genetic Algorithms](#6-genetic-algorithms)
+- [7. Constraint Satisfaction Problems](#7-constraint-satisfaction-problems)
+  - [7.1. CSP Example using Sudoku](#71-csp-example-using-sudoku)
+  - [7.2. CSP solutions](#72-csp-solutions)
+- [8. Clustering Algorithms](#8-clustering-algorithms)
+  - [8.1. K-Means Clustering](#81-k-means-clustering)
+  - [8.2. K-Nearest Neighbor Clustering](#82-k-nearest-neighbor-clustering)
+  - [8.3. Mean Shift](#83-mean-shift)
+  - [8.4. Density Based Spatial Clustering (DBSCAN)](#84-density-based-spatial-clustering-dbscan)
+  - [8.5. Expectation Maximization Clustering using Gaussian Mixture Models (GMMs)](#85-expectation-maximization-clustering-using-gaussian-mixture-models-gmms)
+  - [8.6. Agglomerative Hierarchical Clustering](#86-agglomerative-hierarchical-clustering)
+- [9. Compression Algorithms](#9-compression-algorithms)
+  - [Image and Video compression](#image-and-video-compression)
+  - [Audio compression](#audio-compression)
+  - [Text and Binary data compression](#text-and-binary-data-compression)
+    - [Huffman coding](#huffman-coding)
+      - [Huffman Tree](#huffman-tree)
+      - [Construction of a Huffman Tree](#construction-of-a-huffman-tree)
+- [10. Encryption Algorithms](#10-encryption-algorithms)
+- [11. Algorithm libraries](#11-algorithm-libraries)
 
-## Data Storage considerations
+## 1. Data Storage considerations
 
-### Mutable vs Immutable
+### 1.1. Mutable vs Immutable
 
 Mutable data can be modified, whereas immutable data cannot.  
 
 Instead of modifying the content of an immutable data storage container, create a new data storage container with the desired content, as the original content cannot be modified once defined.
 
-### Stack vs Heap
+### 1.2. Stack vs Heap
 
 | Feature                | Stack                                         | Heap                                   |
 | ---------------------- | --------------------------------------------- | -------------------------------------- |
@@ -91,7 +102,7 @@ Instead of modifying the content of an immutable data storage container, create 
 
 *Note:*  Higher level languages which support flexible data containers typically store the container data in the heap.  When a container is passed as a parameter on a function call, a reference to the container (not the whole container) is stored on the stack, as part of the reserved memory allocated for the function call.  By passing the reference to the array, your defining where in the heap the array data can be found.
 
-### Arrays
+### 1.3. Arrays
 
 An array is a sequence of zero or more values.  In an array, the order of the values is important.
 
@@ -105,7 +116,7 @@ T Index[int position];
 void Add(int position, T value);
 ```
 
-### Sets
+### 1.4. Sets
 
 A set is a storage type which contains zero or more values, where the order is typically not important. 
 
@@ -123,7 +134,7 @@ Set<T> Union(Set<T> set1, Set<T> set2);
 // Returns Items strictly in both set1 and set2
 Set<T> Intersection(Set<T> set1, Set<T> set2); 
 ```
-### Queues
+### 1.5. Queues
 
 Queues are a useful data storage type when processing data in sequence.  Queues aid the processing of data in parallel, as data is typically removed from the queue before processing commences.
 
@@ -135,19 +146,19 @@ void Push<T>(T value);
 T Pop<T>();
 ```
 
-#### FIFO - First In First Out
+#### 1.5.1. FIFO - First In First Out
 
 Items in the queue are processed in the insert order sequence, ensuring that the oldest items in the queue are the next items to be processed.  E.g. service at a checkout register while shopping
 
 ![FIFO](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Fifo_queue.png/350px-Fifo_queue.png)
 
-#### LIFO - Last In First Out
+#### 1.5.2. LIFO - Last In First Out
 
 Items in the queue are processed, such that the most recent added items are the first to be processed. E.g. A todo tray on a desk, where the top item is processed first
 
 ![LIFO](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lifo_stack.png/350px-Lifo_stack.png)
 
-### Dictionaries
+### 1.6. Dictionaries
 
 Dictionaries are a type of associated array composed of  `key` + `value` pairs, where the location of the `value`, is determined by the `key`.  Use of dictionaries are great, when the key is a scalar data type, such as integer or a simple string.
 
@@ -168,17 +179,17 @@ bool Exists(TKey key);
 
 Dictionaries can be implemented in a number of different ways, including hash tables, self-balancing binary search trees, unbalanced binary search trees and a sequential container of key value pairs.
 
-### Trees
+### 1.7. Trees
 
 Trees are an important data structure which aids rapid data access and search algorithms.  The trade off for these benefits is insert and delete time, which modifies the structure of the tree.
 
-#### Binary Search Tree
+#### 1.7.1. Binary Search Tree
 
 A binary search tree is a rooted binary tree, whose internal nodes each store a key (and optionally, an associated value), and each has two distinguished sub-trees, commonly denoted *left* and *right*.
 
 ![Binaryt Search Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/180px-Binary_search_tree.svg.png)
 
-#### Red Black Tree
+#### 1.7.2. Red Black Tree
 
 A Red Black Tree is a specialization of the Binary Search Tree, where the leaf nodes do not contain data.
 
@@ -190,53 +201,53 @@ A Red Black Tree is a specialization of the Binary Search Tree, where the leaf n
 
 ![Red Black Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Red-black_tree_example.svg/500px-Red-black_tree_example.svg.png)
 
-## Sorting algorithms
+## 2. Sorting algorithms
 
-### [Insert Sort](https://en.wikipedia.org/wiki/Insertion_sort)
+### 2.1. [Insert Sort](https://en.wikipedia.org/wiki/Insertion_sort)
 
 Insertion sort is a simple sorting algorithm that is relatively efficient for small lists and mostly sorted lists. It works by taking elements from the list one by one and inserting them in their correct position into a new sorted list.
 
-### Selection Sort
+### 2.2. Selection Sort
 
 Selection sort is an in-place comparison sort. It has O(n2) complexity, making it inefficient on large lists, and generally performs worse than the similar insertion sort. Selection sort is noted for its simplicity, and also has performance advantages over more complicated algorithms in certain situations.
 
 ![Selection Sort](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
 
-### [Bubble Sort](https://en.wikipedia.org/wiki/Bubble_sort)
+### 2.3. [Bubble Sort](https://en.wikipedia.org/wiki/Bubble_sort)
 
 Bubble sort is a simple sorting algorithm. The algorithm starts at the beginning of the data set. It compares the first two elements, and if the first is greater than the second, it swaps them. It continues doing this for each pair of adjacent elements to the end of the data set. It then starts again with the first two elements, repeating until no swaps have occurred on the last pass.
 
 ![Bubble Sort](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)
 
-### [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)
+### 2.4. [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)
 
 Quicksort is a divide and conquer algorithm which relies on a partition operation: to partition an array, an element called a pivot is selected. All elements smaller than the pivot are moved before it and all greater elements are moved after it. This can be done efficiently in linear time and in-place. The lesser and greater sublists are then recursively sorted. This yields average time complexity of O(n log n), with low overhead, and thus this is a popular algorithm. Efficient implementations of quicksort (with in-place partitioning) are typically unstable sorts and somewhat complex, but are among the fastest sorting algorithms in practice. Together with its modest O(log n) space usage, quicksort is one of the most popular sorting algorithms and is available in many standard programming libraries.
 
 ![Quick Sort](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Sorting_quicksort_anim.gif/220px-Sorting_quicksort_anim.gif)
 
-### [Heap Sort](https://en.wikipedia.org/wiki/Heapsort)
+### 2.5. [Heap Sort](https://en.wikipedia.org/wiki/Heapsort)
 
 Heapsort is a much more efficient version of selection sort. It also works by determining the largest (or smallest) element of the list, placing that at the end (or beginning) of the list, then continuing with the rest of the list, but accomplishes this task efficiently by using a data structure called a heap, a special type of binary tree. Once the data list has been made into a heap, the root node is guaranteed to be the largest (or smallest) element. When it is removed and placed at the end of the list, the heap is rearranged so the largest element remaining moves to the root. Using the heap, finding the next largest element takes O(log n) time, instead of O(n) for a linear scan as in simple selection sort. This allows Heapsort to run in O(n log n) time, and this is also the worst case complexity.
 
 ![Heap Sort](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
 
-### [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
+### 2.6. [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
 
 Merge sort takes advantage of the ease of merging already sorted lists into a new sorted list. It starts by comparing every two elements (i.e., 1 with 2, then 3 with 4...) and swapping them if the first should come after the second. It then merges each of the resulting lists of two into lists of four, then merges those lists of four, and so on; until at last two lists are merged into the final sorted list. Of the algorithms described here, this is the first that scales well to very large lists, because its worst-case running time is O(n log n). It is also easily applied to lists, not only arrays, as it only requires sequential access, not random access. However, it has additional O(n) space complexity, and involves a large number of copies in simple implementations.
 
 ![Merge Sort](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Merge-sort-example-300px.gif/220px-Merge-sort-example-300px.gif)
 
-## [Searching algorithms](https://en.wikipedia.org/wiki/Search_algorithm)
+## 3. [Searching algorithms](https://en.wikipedia.org/wiki/Search_algorithm)
 
 Searching algorithms typically attempt to achieve efficiency within a defined problem domain, either in discrete or continuous data.
 
 Searching algorithms are also highly dependent on the data types being stored and the data structure containing the data, and the order of the data within the structure.
 
-### [Indexes](https://en.wikipedia.org/wiki/Search_engine_indexing#The_forward_index)
+### 3.1. [Indexes](https://en.wikipedia.org/wiki/Search_engine_indexing#The_forward_index)
 
 Indexes are used to quickly access data stored within a data set.
 
-#### [Forward Indexes](https://en.wikipedia.org/wiki/Search_engine_indexing#The_forward_index)
+#### 3.1.1. [Forward Indexes](https://en.wikipedia.org/wiki/Search_engine_indexing#The_forward_index)
 
 At a library, forward indexes are used in catalogs to help visitors find books based on a set of key words:
 
@@ -257,7 +268,7 @@ Example of a Forward Index
 
 *Note: in the above forward index case the Words cannot be determined without first providing the Document*
 
-#### [Inverted Index](https://en.wikipedia.org/wiki/Inverted_index)
+#### 3.1.2. [Inverted Index](https://en.wikipedia.org/wiki/Inverted_index)
 
 In computer science, an inverted index (also referred to as a postings file or inverted file) is a database index storing a mapping from content, such as words or numbers, to its locations in a table, or in a document or a set of documents (named in contrast to a forward index, which maps from documents to content). The purpose of an inverted index is to allow fast full-text searches, at a cost of increased processing when a document is added to the database. The inverted file may be the database file itself, rather than its index. It is the most popular data structure used in document retrieval systems, used on a large scale for example in search engines. Additionally, several significant general-purpose mainframe-based database management systems have used inverted list architectures, including ADABAS, DATACOM/DB, and Model 204.
 
@@ -274,11 +285,11 @@ There are two main variants of inverted indexes:
 - A record-level inverted index (or inverted file index or just inverted file) contains a list of references to documents for each word. 
 - A word-level inverted index (or full inverted index or inverted list) additionally contains the positions of each word within a document. The latter form offers more functionality (like phrase searches), but needs more processing power and space to be created.
 
-#### [Reverse Index](https://en.wikipedia.org/wiki/Reverse_index)
+#### 3.1.3. [Reverse Index](https://en.wikipedia.org/wiki/Reverse_index)
 
 Reverse Indexes are used to reverse the digits or characters in a dictionary storage key to avoid contention in busy transactional data storage systems.
 
-### Database Pages
+### 3.2. Database Pages
 
 In relational databases, table data is typically stored in a set of sequential records spread over several Pages.  When defining a table, the database configuration and table creation statements instruct how full each Page will be maintained.  Pages which are mostly empty utilize excessive disk space, whereas pages which are mostly full suffer from fragmentation issues and modification delays.
 
@@ -286,56 +297,56 @@ Inside each Page, data is stored sequentially in contiguous blocks of memory.
 
 Typically Pages are used to calculate hint statistics and metadata which aids as a high level search index to find the first item in each Page.
 
-### Search Algorithm concepts
+### 3.3. Search Algorithm concepts
 
-#### [Brute Force Search (No Knowledge)](https://en.wikipedia.org/wiki/Brute-force_search)
+#### 3.3.1. [Brute Force Search (No Knowledge)](https://en.wikipedia.org/wiki/Brute-force_search)
 
 A naive and simplistic exhaustive search where every element in a data structure is assessed for suitability against a search condition. This type of search is known to be exceptionally slow in unstructured and unsorted data.
 
-#### [Backward Induction Search](https://en.wikipedia.org/wiki/Backward_induction)
+#### 3.3.2. [Backward Induction Search](https://en.wikipedia.org/wiki/Backward_induction)
 
 Backward induction is the process of reasoning backwards in time, from the end of a problem or situation, to determine a sequence of optimal actions. It proceeds by examining the last point at which a decision is to be made and then identifying what action would be most optimal at that moment. Using this information, one can then determine what to do at the second-to-last time of decision. This process continues backwards until one has determined the best action for every possible situation (i.e. for every possible information set) at every point in time.
 
 - In the mathematical optimization method of dynamic programming, backward induction is one of the main methods for solving the Bellman equation.
 - In game theory, backward induction is a method used to compute sub-game perfect equilibria in sequential games.
 
-#### [Heuristics Search (Partial Knowledge)](https://en.wikipedia.org/wiki/Heuristic_(computer_science))
+#### 3.3.3. [Heuristics Search (Partial Knowledge)](https://en.wikipedia.org/wiki/Heuristic_(computer_science))
 
 In mathematical optimization and computer science, heuristic (from Greek εὑρίσκω "I find, discover") is a technique designed for solving a problem more quickly when classic methods are too slow, or for finding an approximate solution when classic methods fail to find any exact solution. This is achieved by trading optimality, completeness, accuracy, or precision for speed. In a way, it can be considered a shortcut.
 
 A heuristic function, also called simply a heuristic, is a function that ranks alternatives in search algorithms at each branching step based on available information to decide which branch to follow. For example, it may approximate the exact solution.
 
-#### [Local Consistency and Constraint Propagation](https://en.wikipedia.org/wiki/Local_consistency)
+#### 3.3.4. [Local Consistency and Constraint Propagation](https://en.wikipedia.org/wiki/Local_consistency)
 
 In constraint satisfaction, local consistency conditions are properties of constraint satisfaction problems related to the consistency of subsets of variables or constraints. They can be used to reduce the search space and make the problem easier to solve. Various kinds of local consistency conditions are leveraged, including node consistency, arc consistency, and path consistency.
 
 Every local consistency condition can be enforced by a transformation that changes the problem without changing its solutions. Such a transformation is called constraint propagation. Constraint propagation works by reducing domains of variables, strengthening constraints, or creating new ones. This leads to a reduction of the search space, making the problem easier to solve by some algorithms. Constraint propagation can also be used as an unsatisfiability checker, incomplete in general but complete in some particular cases.
 
-### [Combinatorial Search](https://en.wikipedia.org/wiki/Combinatorial_search)
+### 3.4. [Combinatorial Search](https://en.wikipedia.org/wiki/Combinatorial_search)
 
 In computer science and artificial intelligence, combinatorial search studies search algorithms for solving instances of problems that are believed to be hard in general, by efficiently exploring the usually large solution space of these instances. Combinatorial search algorithms achieve this efficiency by reducing the effective size of the search space or employing heuristics
 
 Lookahead constraints in combinatorial searches are used to limit the depth of search, as traditionally hard search domains quickly exhaust computing resources.
 
-#### [Alpha-Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
+#### 3.4.1. [Alpha-Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
 
 Alpha–beta pruning is a search algorithm that seeks to decrease the number of nodes that are evaluated by the minimax algorithm in its search tree. It is an adversarial search algorithm used commonly for machine playing of two-player games (Tic-tac-toe, Chess, Go, etc.). It stops evaluating a move when at least one possibility has been found that proves the move to be worse than a previously examined move. Such moves need not be evaluated further. When applied to a standard minimax tree, it returns the same move as minimax would, but prunes away branches that cannot possibly influence the final decision.
 
-#### [Branch and Bound](https://en.wikipedia.org/wiki/Branch_and_bound)
+#### 3.4.2. [Branch and Bound](https://en.wikipedia.org/wiki/Branch_and_bound)
 
 Branch and bound (BB, B&B, or BnB) is an algorithm design paradigm for discrete and combinatorial optimization problems, as well as mathematical optimization. A branch-and-bound algorithm consists of a systematic enumeration of candidate solutions by means of state space search: the set of candidate solutions is thought of as forming a rooted tree with the full set at the root. The algorithm explores branches of this tree, which represent subsets of the solution set. Before enumerating the candidate solutions of a branch, the branch is checked against upper and lower estimated bounds on the optimal solution, and is discarded if it cannot produce a better solution than the best one found so far by the algorithm.
 
 The algorithm depends on efficient estimation of the lower and upper bounds of regions/branches of the search space. If no bounds are available, the algorithm degenerates to an exhaustive search.
 
-#### [MinMax](https://en.wikipedia.org/wiki/Minimax)
+#### 3.4.3. [MinMax](https://en.wikipedia.org/wiki/Minimax)
 
 Minimax (sometimes MinMax, MM] or saddle point) is a decision rule used in artificial intelligence, decision theory, game theory, statistics, and philosophy for minimizing the possible loss for a worst case (maximum loss) scenario. When dealing with gains, it is referred to as "maximin"—to maximize the minimum gain. Originally formulated for n-player zero-sum game theory, covering both the cases where players take alternate moves and those where they make simultaneous moves, it has also been extended to more complex games and to general decision-making in the presence of uncertainty.
 
-## [Graphs](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
+## 4. [Graphs](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
 
-### Graph Search
+### 4.1. Graph Search
 
-#### [Breadth First Search](https://en.wikipedia.org/wiki/Breadth-first_search)
+#### 4.1.1. [Breadth First Search](https://en.wikipedia.org/wiki/Breadth-first_search)
 
 Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data structures. It starts at the tree root (or some arbitrary node of a graph, sometimes referred to as a 'search key'), and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.
 
@@ -360,7 +371,7 @@ procedure BFS(G, root) is
         Q.enqueue(w)
 ```
 
-#### [Depth First Search](https://en.wikipedia.org/wiki/Depth-first_search)
+#### 4.1.2. [Depth First Search](https://en.wikipedia.org/wiki/Depth-first_search)
 
 Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.
 
@@ -380,7 +391,7 @@ procedure DFS_iterative(G, v) is
                 S.push(w)
 ```
 
-#### [A* Star Search](https://en.wikipedia.org/wiki/A*_search_algorithm)
+#### 4.1.3. [A* Star Search](https://en.wikipedia.org/wiki/A*_search_algorithm)
 
 A* is an informed search algorithm, or a best-first search, meaning that it is formulated in terms of weighted graphs: starting from a specific starting node of a graph, it aims to find a path to the given goal node having the smallest cost (least distance travelled, shortest time, etc.). It does this by maintaining a tree of paths originating at the start node and extending those paths one edge at a time until its termination criterion is satisfied.
 
@@ -388,19 +399,64 @@ A* is an informed search algorithm, or a best-first search, meaning that it is f
 
 [Further Reading for Goal Oriented Action Planning](/search?query=GOAP)
 
-## Genetic Algorithms
+## 5. Divide and Conquer vs. Dynamic Programming 
+
+### 5.1. Optimal Substructure
+
+A problem is said to have optimal substructure if an optimal solution can be constructed from optimal solutions of its subproblem
+
+![Optimal Substructure](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Shortest_path_optimal_substructure.svg/200px-Shortest_path_optimal_substructure.svg.png)
+
+### 5.2. Overlapping Sub-problems
+
+A problem is said to have overlapping sub-problems if the problem can be broken down into sub-problems which are reused several times or a recursive algorithm for the problem solves the same subproblem over and over rather than always generating new sub-problems.
+
+### 5.3. [Divide and Conquer](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm)
+
+Divide and Conquer algorithms solve a specific high level problem by dividing the problem into simpler independent sub-problems, then solving those, before combining the result to achieve the solution to the high level problem.
+
+Typically, Divide and Conquer is used to determine the optimal solution to a problem.
+
+The conditions for a problem to be solvable by divide and conquer are:
+- Divisibility of the problem, into sub-problems
+- Optimal solutions achievable for sub-problems
+- The sub-problems must not overlap. 
+
+Therefore, we say Divide and Conquer algorithms:
+- Must have **Optimal Substructure**
+- Must not have **Overlapping Sub-problems**
+
+Traditional examples of Divide and Conquer include:
+- Quick Sort
+- Merge Sort
+
+### 5.4. [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming) 
+
+Dynamic Programming, like Divide and Conquer algorithms, pertains to the division of a problem into smaller sub-problems, to derive the solution to a complex problem.
+
+However, unlike Divide and Conquer algorithms, Dynamic Programming algorithms:
+- Must have **Optimal Substructure** 
+- Must have **Overlapping Sub-problems** 
+
+Traditional examples of Dynamic Programming algorithms include:
+- Tower of Hanoi algorithm
+- Fibonacci algorithm
+
+Using Memoization, typically a table can be used to store the results of dynamic programming sub-problem solutions to quickly construct solutions to complex Dynamic Programming problems.
+
+## 6. [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm)
 
 Genetic Algorithms are derived from traditional biological processes of genetic mixing, through instruction and variable selection, crossover, and mutation.  Due to their ability to solve traditionally hard problems, without using human deductive reasoning, they are often used when other techniques have failed to achieve an appropriate solution.  Conceptually, in this domain, programs are able to write themselves, as a satisfactory measure is inbuilt to determine when a solution achieves a goal.  In addition, genetic algorithms are only really practical when operating in parallel with a pool simultaneous algorithms competing to solve the solution.
 
-## Constraint Satisfaction Problems
+## 7. [Constraint Satisfaction Problems](https://en.wikipedia.org/wiki/Constraint_satisfaction_problem)
 
 Constraint Satisfaction Problems (CSPs) are a broad strategy to define the conditions under which a problem can be deemed solved.
 
-- Variables - The contextual players of the problem, 
-- Domains - The contextual options which govern the players
-- Constraints - The contextual limitations placed upon the players and domain, which must be satisfied to achieve a solution to the problem
+- *Variables* - The contextual players of the problem, 
+- *Domains* - The contextual options which govern the players
+- *Constraints* - The contextual limitations placed upon the players and domain, which must be satisfied to achieve a solution to the problem
 
-### CSP Example using Sudoku
+### 7.1. CSP Example using Sudoku
 
 In classic sudoku, the objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that compose the grid (also called "boxes", "blocks", or "regions") contain all of the digits from 1 to 9. The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a single solution.
 
@@ -420,7 +476,7 @@ Constraints
 
 Note: It is intentional to word the constraints all in positive language, however it is possible to write the constraints in negative constraints also.  By writing them all as either positive conditions, or negative conditions, the implementation is more consistent.
 
-### CSP solutions
+### 7.2. CSP solutions
 
 The primary problem is finding the state of a set of variables within the domains which satisfy the constraints.
 
@@ -432,13 +488,13 @@ Options to tackle CSPs typically require a couple of core features.
   - Operations which recognize when a path to seek a solution is a dead end (Back tracking)
   - Operations which can forward search for easy solutions when nearly complete (Look ahead)
 
-## Clustering Algorithms
+## 8. [Clustering Algorithms](https://en.wikipedia.org/wiki/Cluster_analysis)
 
 Clustering algorithms attempt to detect similarity between values within data sets, such that automated grouping can be achieved.  Clustering algorithms are used extensively in machine learning, particularly in unsupervised learning or data set inspection.
 
 Clustering algorithm are useful for classifying groups of points, and also for finding outliers in the data set.
 
-### [K-Means Clustering](https://en.wikipedia.org/wiki/K-means_clustering)
+### 8.1. [K-Means Clustering](https://en.wikipedia.org/wiki/K-means_clustering)
 
 K-Means is one of the most trivial clustering algorithms and is easy to implement.
 
@@ -458,7 +514,7 @@ Issues:
   - the rate of movement into convergence locations
   - the detection of convergence
 
-### K-Nearest Neighbor Clustering
+### 8.2. [K-Nearest Neighbor Clustering](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm)
 
 1. Load the data
 2. Initialize K to your chosen number of neighbors
@@ -476,7 +532,7 @@ Issues:
 - Slow as the number of points increases
 - Improvements can be made by limiting the range of search to find neighbors
 
-### Means Shift
+### 8.3. [Mean Shift](https://en.wikipedia.org/wiki/Mean_shift)
 
 Means Shift algorithm is used to achieve clustering in a non-circular solution.
 
@@ -496,19 +552,67 @@ Issues:
 - Not guaranteed to result in an optimum result
 - Calculating the KDE can be costly
 
-### Density Based Spatial Clustering (DBSCAN)
+### 8.4. Density Based Spatial Clustering (DBSCAN)
 
-### Expectation Maximization Clustering using Gaussian Mixture Models (GMMs)
+### 8.5. Expectation Maximization Clustering using Gaussian Mixture Models (GMMs)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/ClusterAnalysis_Mouse.svg/450px-ClusterAnalysis_Mouse.svg.png)
 
-### Agglomerative Hierarchical Clustering 
+### 8.6. Agglomerative Hierarchical Clustering 
 
-## Compression Algorithms
+## 9. Compression Algorithms
 
-## Encryption Algorithms
+Compression algorithms are described as being lossy or lossless:
+- *Lossy* compression results in the loss of detail, and permanent degradation of the source data, and is therefore a one-way operation
+- *Lossless* compression results in the complete reconstruction of source data, and is therefore a reversible operation
 
-## Algorithm libraries
+### Image and Video compression
+
+Image compression techniques typically utilize lossy approaches, as users are typically not concerned about the visual loss of detail, when it is moderately applied.
+
+Popular image compression algorithms include:
+- [JPEG](https://en.wikipedia.org/wiki/JPEG)
+- GIF
+- TIFF
+- [H.263](https://en.wikipedia.org/wiki/H.263) and [H.264 / MPEG-4](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)
+
+### Audio compression
+
+Audio compression techniques typically utilize lossy approaches to remove artifacts which remove aspects outside the typical human-audible range.
+
+Popular audio compression algorithms include:
+- [MP3](https://en.wikipedia.org/wiki/MP3)
+- [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)
+- Telephone filters and multiplexing
+
+### Text and Binary data compression
+
+Text compression techniques require lossless approaches, as the degradation of text is typically undesirable, resulting in the loss of meaning of the text.
+
+Binary data is considered to require complete reconstruction, via decompression, and therefore requires a lossless techniques.
+
+Popular compression algorithms include:
+- [Lempel-Ziv](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv) (LZ) and [Lempel-Ziv-Welch](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch) LZW
+- [GZip](https://en.wikipedia.org/wiki/Gzip) which uses [Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding) and [LZ77](https://en.wikipedia.org/wiki/LZ77_and_LZ78)
+
+#### Huffman coding
+
+A Huffman code is a particular type of optimal prefix code that is commonly used for lossless data compression. The Huffman coding algorithm is used to get Huffman codes.
+
+The output from Huffman's algorithm can be viewed as a variable-length code table for encoding a source symbol (such as a character in a file). The algorithm derives this table from the estimated probability or frequency of occurrence (weight) for each possible value of the source symbol.
+
+##### Huffman Tree
+
+![Huffman Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/220px-Huffman_tree_2.svg.png)
+
+##### Construction of a Huffman Tree
+
+![Construction of Huffman Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/HuffmanCodeAlg.png/220px-HuffmanCodeAlg.png)
+
+
+## 10. Encryption Algorithms
+
+## 11. Algorithm libraries
 
 - C/C++
   - [Boost](https://www.boost.org/) - *[Documentation 1.75.0](https://www.boost.org/doc/libs/1_75_0/)*
