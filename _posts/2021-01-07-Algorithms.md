@@ -67,12 +67,13 @@ Algorithm efficiency dramatically effects software success. This guide assists i
   - [8.5. Expectation Maximization Clustering using Gaussian Mixture Models (GMMs)](#85-expectation-maximization-clustering-using-gaussian-mixture-models-gmms)
   - [8.6. Agglomerative Hierarchical Clustering](#86-agglomerative-hierarchical-clustering)
 - [9. Compression Algorithms](#9-compression-algorithms)
-  - [Image and Video compression](#image-and-video-compression)
-  - [Audio compression](#audio-compression)
-  - [Text and Binary data compression](#text-and-binary-data-compression)
-    - [Huffman coding](#huffman-coding)
-      - [Huffman Tree](#huffman-tree)
-      - [Construction of a Huffman Tree](#construction-of-a-huffman-tree)
+  - [9.1. Image and Video compression](#91-image-and-video-compression)
+  - [9.2. Audio compression](#92-audio-compression)
+  - [9.3. Text and Binary data compression](#93-text-and-binary-data-compression)
+    - [9.3.1. Huffman coding](#931-huffman-coding)
+      - [9.3.1.1. Huffman Tree](#9311-huffman-tree)
+      - [9.3.1.2. Construction of a Huffman Tree](#9312-construction-of-a-huffman-tree)
+      - [9.3.1.3 Huffman Code table](#9313-huffman-code-table)
 - [10. Encryption Algorithms](#10-encryption-algorithms)
 - [11. Algorithm libraries](#11-algorithm-libraries)
 
@@ -566,7 +567,7 @@ Compression algorithms are described as being lossy or lossless:
 - *Lossy* compression results in the loss of detail, and permanent degradation of the source data, and is therefore a one-way operation
 - *Lossless* compression results in the complete reconstruction of source data, and is therefore a reversible operation
 
-### Image and Video compression
+### 9.1. Image and Video compression
 
 Image compression techniques typically utilize lossy approaches, as users are typically not concerned about the visual loss of detail, when it is moderately applied.
 
@@ -576,7 +577,7 @@ Popular image compression algorithms include:
 - TIFF
 - [H.263](https://en.wikipedia.org/wiki/H.263) and [H.264 / MPEG-4](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)
 
-### Audio compression
+### 9.2. Audio compression
 
 Audio compression techniques typically utilize lossy approaches to remove artifacts which remove aspects outside the typical human-audible range.
 
@@ -585,7 +586,7 @@ Popular audio compression algorithms include:
 - [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)
 - Telephone filters and multiplexing
 
-### Text and Binary data compression
+### 9.3. Text and Binary data compression
 
 Text compression techniques require lossless approaches, as the degradation of text is typically undesirable, resulting in the loss of meaning of the text.
 
@@ -595,20 +596,45 @@ Popular compression algorithms include:
 - [Lempel-Ziv](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv) (LZ) and [Lempel-Ziv-Welch](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch) LZW
 - [GZip](https://en.wikipedia.org/wiki/Gzip) which uses [Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding) and [LZ77](https://en.wikipedia.org/wiki/LZ77_and_LZ78)
 
-#### Huffman coding
+#### 9.3.1. [Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding)
 
 A Huffman code is a particular type of optimal prefix code that is commonly used for lossless data compression. The Huffman coding algorithm is used to get Huffman codes.
 
 The output from Huffman's algorithm can be viewed as a variable-length code table for encoding a source symbol (such as a character in a file). The algorithm derives this table from the estimated probability or frequency of occurrence (weight) for each possible value of the source symbol.
 
-##### Huffman Tree
+##### 9.3.1.1. Huffman Tree
 
 ![Huffman Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/220px-Huffman_tree_2.svg.png)
 
-##### Construction of a Huffman Tree
+##### 9.3.1.2. Construction of a Huffman Tree
 
 ![Construction of Huffman Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/HuffmanCodeAlg.png/220px-HuffmanCodeAlg.png)
 
+##### 9.3.1.3 Huffman Code table
+
+|              |                                               |                |       |       |       |       |              |
+| ------------ | --------------------------------------------- | -------------- | ----- | ----- | ----- | ----- | ------------ |
+| Input (A, W) | Symbol (ai)                                   | a              | b     | c     | d     | e     | Sum          |
+|              | Weights (wi)                                  | 0.10           | 0.15  | 0.30  | 0.16  | 0.29  | = 1          |
+| Output       | C                                             | Codewords (ci) | 010   | 011   | 11    | 00    | 10           |
+|              | Codeword length (in bits) (li)                | 3              | 3     | 2     | 2     | 2     |              |
+|              | Contribution to weighted path length (li wi ) | 0.30           | 0.45  | 0.60  | 0.32  | 0.58  | L(C) = 2.25  |
+| Optimality   | Probability budget (2−li)                     | 1/8            | 1/8   | 1/4   | 1/4   | 1/4   | = 1.00       |
+|              | Information content (in bits) (−log2 wi) ≈    | 3.32           | 2.74  | 1.74  | 2.64  | 1.79  |              |
+|              | Contribution to entropy(−wi log2 wi)          | 0.332          | 0.411 | 0.521 | 0.423 | 0.518 | H(A) = 2.205 |
+
+where: 
+- Weights are typically proportional to probabilities of the symbol
+  
+  ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/56178ec1f7f6630fb1ce4c86bec6829437790d20)
+
+- Information content h
+  
+  ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/2799f589d23a9f11345131ef8cef9937c5e7c456)
+
+- Entropy
+  
+  ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/1be32c5fb44ffa0961a0cf1d506e0bca05c7c3eb)
 
 ## 10. Encryption Algorithms
 
