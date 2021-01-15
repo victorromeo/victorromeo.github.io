@@ -9,7 +9,7 @@ imagecredit: https://unsplash.com/@andreuuuw
 type: article
 ---
 
-MultiAgent Systems are a powerful conceptual approach to understanding the behaviour of agents within a system constrained within a fabricated environment
+MultiAgent Systems are autonomous actors which assist a systems users achieve specific goals, but do so by understanding the users requirements without external direction from the user.
 
 <!-- markdownlint-disable MD033 -->
 
