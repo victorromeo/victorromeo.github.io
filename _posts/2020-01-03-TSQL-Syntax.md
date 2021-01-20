@@ -37,14 +37,7 @@ Table of Contents
     - [CREATE TABLE](#create-table)
     - [CREATE PROCEDURE](#create-procedure)
     - [CREATE FUNCTION](#create-function)
-    - [CREATE TRIGGER](#create-trigger)
     - [CREATE VIEW](#create-view)
-- [Database Elements](#database-elements)
-  - [Scripts](#scripts)
-  - [Databases](#databases)
-  - [Table](#table)
-  - [Column](#column)
-  - [Index](#index)
   - [View](#view)
   - [Cursors](#cursors)
   - [Joins](#joins)
@@ -1006,7 +999,7 @@ Inner Joining Pet table with Owner table on OwnerId
 | 3         | B           | Rover       | B             | Jane            |
 | 4         | C           | Rover       | C             | Fred            |
 
-![Inner Join](https://www.dofactory.com/Images/sql-inner-join.png)
+![Inner Join](https://www.dofactory.com/img/sql/sql-inner-join.png)
 
 Notes:
 
@@ -1024,7 +1017,7 @@ Outer Joining Pet table with Owner table on OwnerId
 | 4         | C           | Rover       | C             | Fred            |
 | -         | -           | -           | D             | Sam             |
 
-![Full Join](https://www.dofactory.com/Images/sql-full-join.png)
+![Full Join](https://www.dofactory.com/img/sql/sql-full-join.png)
 
 ### LEFT OUTER JOIN or LEFT JOIN
 
@@ -1043,7 +1036,7 @@ Notes:
 - Owners is the right table
 - Owner Sam (D) is not found in the result set, because there are no Pets owned by Sam.
 
-![Left Join](https://www.dofactory.com/Images/sql-left-join.png)
+![Left Join](https://www.dofactory.com/img/sql/sql-left-join.png)
 
 ### RIGHT OUTER JOIN or RIGHT JOIN
 
@@ -1063,7 +1056,7 @@ Notes:
 - Owners is the right table
 - Owner Sam (D) is found in the result set, because Sam is on the table on the right.
 
-![Right Join](https://www.dofactory.com/Images/sql-right-join.png)
+![Right Join](https://www.dofactory.com/img/sql//sql-right-join.png)
 
 ### [Nested Loop Joins](https://docs.microsoft.com/en-us/sql/relational-databases/performance/joins?view=sql-server-ver15#nested_loops)
 
