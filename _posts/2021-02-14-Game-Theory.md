@@ -134,17 +134,19 @@ Generally, if $c > a > d > b$ means always a Prisoners Dilemma game
 
 ### Pareto Domination
 
-Whenever a player may select an optimal *Strategy Profile* $s$ without negatively impacting other players, then the *Strategy Profile* $s$ **Parent Dominates** other *Strategy Profiles* $s'$
+Whenever a player may select an optimal *Strategy Profile* $s$ without negatively impacting other players, then the *Strategy Profile* $s$ **Pareto Dominates** other *Strategy Profiles* $s'$
 
 Using Pareto Domination we can sort some of our choices, to select better choices
 
 ### Pareto Optimization
 
-Whenever a *Strategy Profile* is better than all other *Strategy Profiles*, it is considered **Pareto Optimized**
+Whenever a Strategy Profile *Pareto Dominates* **all** other Strategy Profiles, it is considered **Pareto Optimized**
+
+This is not just about Action Profile optimization but Strategy Profile optimization of the game.
 
 ### Nash Equilibrium
 
-If a game is considered from a single player's perspective, then we can see that the player will attempt to use opportunities to gain advantage.
+If a competitive game is considered from a single player's perspective, then we can see that the player, who can reason, will attempt to use opportunities to gain advantage.
 
 If a player **has perfect information and knows what other players strategies will be**, then the player may select the best strategy to maximize payoff.
 
