@@ -145,6 +145,26 @@ Results typically need to be understood within a defined scope, or environment. 
 
 It is very important that the recording of results is *dispassionate*, and *free of bias*.  Bias in results will prevent the results from being acceptable in the larger scientific community, as it demonstrates an immature research practice.  It is important that when designing the experiment, that sources of bias be identified and where possible eradicated, documented or explained. 
 
+Examples of bias:
+
+- Selection Bias
+  - A researcher selects respondents whose opinion all tend toward or away from specific opinions
+- Recall Bias
+  - The respondents do not recall experiences accurately or omit details
+- Acquiesence Bias
+  - Respondent chooses to agree with the researcher to seem friendly 
+- Sponsor Bias
+  - Respondents may select the response to questions if they know who is sponsoring research
+- Culture Bias
+  - When assessing another culture, a respondent may do so by comparing it to their own culture
+- Confirmation Bias 
+  - Researchers pick responses to confirm their own preferred conclusions, whilst dismissing opinions which do not support their preferred narrative
+- Question Order Bias
+  - When using a list of questions, respondents may use previous questions to determine how to respond to subsequent questions
+- Leading questions
+  - When the questions posed suggest or lead a respondent toward or away from a particular response
+
+
 ## Assessment of Results
 
 After the results are collected, the results must be assessed as a separate stage.  Assessment can then inform subsequent stages of experimentation.
