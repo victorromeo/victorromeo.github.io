@@ -53,6 +53,33 @@ A simple summary of JavaScript
     </div>
 </div>
 
+<div class="col-6">
+    <div class="card mb-3" >
+        <div class="card-header tn"><span class="border border-danger rounded">S</span> Strings</div>
+        <div class="card-body">
+            <table class="table table-sm">
+                <tr class="table-active"><td class="col-*">Return</td><th class="col-*">Properties</th><td class="col-*"></td></tr>
+                <tr><td><span class="border border-primary rounded">N</span></td><th>.length</th><td>length of string</td></tr>
+                <tr class="table-active"><td class="col-*">Return</td><th class="col-*">Accessor</th><td class="col-*"></td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>[2]</th><td>Array accessor, returns character at index offset 2 (Unsafe if length of string < 2)</td></tr>
+                 <tr class="table-active"><td class="col-*">Return</td><th class="col-*">Methods</th><td class="col-*"></td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>.charAt(2)</th><td>Returns character at index offset 2</td></tr>
+                <tr><td><span class="border border-danger rounded">s</span></td><th>.charCodeAt(2)</th><td>Returns the ascii code of the character at position 2</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>.concat("1","2","3")</th><td>Returns string with values "123" appended to the end of the string</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>.indexOf("value")</th><td>find first occurrence of string, or -1</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>.lastIndexOf("value")</th><td>find last occurrence of string, or -1</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>.replace("abc","123")</th><td>Returns the string with all instances of string "abc" replaced with "123"</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>.slice(3,6)</th><td>Returns string with characters inside range removed. Negative numbers are from end of string.</td></tr>
+                <tr><td><span class="border border-danger rounded">S[]</span></td><th>.split(",")</th><td>Returns an array of strings, split using the provided separator</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>.toLowerCase()</th><td>Returns string in "lower case"</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>.toUpperCase()</th><td>Returns string in "UPPER CASE"</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>value.toString()</th><td>Returns value as string</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>value.toString(16)</th><td>Returns number value as hex string</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
 <div class="col-12">
     <div class="card mb-3" >
         <div class="card-header">RESTful Architecture</div>
