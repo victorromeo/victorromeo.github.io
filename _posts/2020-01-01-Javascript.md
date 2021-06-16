@@ -14,7 +14,8 @@ A simple summary of JavaScript
     }
 
     .tn {
-        color: blue;
+        color: black;
+        font-size: 1.1em;
     }
 
     .tn.tx {
@@ -28,7 +29,68 @@ A simple summary of JavaScript
 
 <div class="row">
 
-<div class="col-6">
+<div class="col-lg-6 col-sm-12">
+    <div class="card mb-3" >
+        <div class="card-header tn">Data Types</div>
+        <div class="card-body">
+            <table class="table table-sm">
+                <tr><td><span class="border border-danger rounded">S</span></td><th>var s = "string";</th><td>String</td></tr>
+                <tr><td><span class="border border-primary rounded">N</span></td><th>var n = 4.0;</th><td>Number</td></tr>
+                <tr><td><span class="border border-warning rounded">B</span></td><th>var b = True;</th><td>Boolean</td></tr>
+                <tr><td><span class="border border-primary rounded">N[]&nbsp;</span></td><th>var a = [1,2,3,4];</th><td>Array of numbers</td></tr>
+                <tr><td><span class="border border-danger rounded">S</span></td><th>var a = ["a","b","c"];</th><td>Array of strings</td></tr>
+                <tr><td><span>*</span></td><th>var g = /()/;</th><td>Regular Expression syntax</td></tr>
+                <tr><td><span class="border border-primary rounded">N</span></td><th>const n = 4.0;</th><td>Constant Number, runtime immutable</td></tr>
+                <tr><td><span class="border border-primary rounded">N</span></td><th>let n = 4.0;</th><td>Block scope number definition, ie. inside functions</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6 col-sm-12">
+    <div class="card mb-3" >
+        <div class="card-header tn">Using data types</div>
+        <div class="card-body">
+            <table class="table table-sm">
+                <tr class="table-active"><td colspan="2" class="col-*">Assignment</td></tr>
+                <tr><th>var s = "string";</th><td>Stores the value into the variable</td></tr>
+                <tr class="table-active"><td colspan="2" class="col-*">Comparison</td></tr>
+                <tr><th>a == b</th><td>Equals</td></tr>
+                <tr><th>a === b</th><td>Strictly Equals</td></tr>
+                <tr><th>a != b</th><td>Not equal</td></tr>
+                <tr><th>!(a == b)</th><td>Logical not of a == b</td></tr>
+                <tr><th>a !== b</th><td>Strictly not equal</td></tr>
+                <tr><th>a &lt; b</th><td>Less than</td></tr>
+                <tr><th>a &lt;= b</th><td>Less than, or equal</td></tr>
+                <tr><th>a &gt; b</th><td>Greater than</td></tr>
+                <tr><th>a &gt;= b</th><td>Greater than</td></tr>
+the variable</td></tr>
+                <tr class="table-active"><td colspan="2" class="col-*">Arithmetic</td></tr>
+                <tr><th>a += b</th><td>Adds a and b, then assigns value to a</td></tr>
+                <tr><th>a -= b</th><td>Subtracts b from a, then assigns value to a</td></tr>
+                <tr><th>a /= b</th><td>Divides a by b, then assigns value to a</td></tr>
+                <tr><th>a *= b</th><td>Multiplies a and b, then assigns value to a</td></tr>
+                <tr class="table-active"><td colspan="2" class="col-*">Logic</td></tr>
+                <tr><th>a && b</th><td>Logical a AND b</td></tr>
+                <tr><th>a || b</th><td>Logical a or b</td></tr>
+                <tr class="table-active"><td colspan="2" class="col-*">Bitwise Operators</td></tr>
+                <tr><th>a & b</th><td>AND</td></tr>
+                <tr><th>a | b</th><td>OR</td></tr>
+                <tr><th>a ^ b</th><td>XOR</td></tr>
+                <tr><th>~ b</th><td>NOT (complement)</td></tr>
+                <tr><th>a &lt;&lt; b</th><td>Shift a left b bits (Increase)</td></tr>
+                <tr><th>a &gt;&gt; b</th><td>Shift a right b bits (Decrease)</td></tr>
+                <tr><th>a &gt;&gt;&gt; b</th><td>Shift a right b bits (Decrease), filling with zeroes</td></tr>
+                <tr class="table-active"><td colspan="2" class="col-*">Other</td></tr>
+                <tr><th>typeof a</th><td>Returns the type of variable 'a' (number, string, object, function)</td></tr>
+                <tr><th>var a;</th><td>undefined, meaning has not been assigned a value</td></tr>
+                <tr><th>var a = null;</th><td>null, has been assigned a non value</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6 col-sm-12">
     <div class="card mb-3" >
         <div class="card-header tn"><span class="border border-primary rounded">N</span> Number()</div>
         <div class="card-body">
@@ -53,7 +115,7 @@ A simple summary of JavaScript
     </div>
 </div>
 
-<div class="col-6">
+<div class="col-lg-6 col-sm-12">
     <div class="card mb-3" >
         <div class="card-header tn"><span class="border border-danger rounded">S</span> Strings</div>
         <div class="card-body">
@@ -70,7 +132,7 @@ A simple summary of JavaScript
                 <tr><td><span class="border border-danger rounded">S</span></td><th>.lastIndexOf("value")</th><td>find last occurrence of string, or -1</td></tr>
                 <tr><td><span class="border border-danger rounded">S</span></td><th>.replace("abc","123")</th><td>Returns the string with all instances of string "abc" replaced with "123"</td></tr>
                 <tr><td><span class="border border-danger rounded">S</span></td><th>.slice(3,6)</th><td>Returns string with characters inside range removed. Negative numbers are from end of string.</td></tr>
-                <tr><td><span class="border border-danger rounded">S[]</span></td><th>.split(",")</th><td>Returns an array of strings, split using the provided separator</td></tr>
+                <tr><td><span class="border border-danger rounded">S[]&nbsp;</span></td><th>.split(",")</th><td>Returns an array of strings, split using the provided separator</td></tr>
                 <tr><td><span class="border border-danger rounded">S</span></td><th>.toLowerCase()</th><td>Returns string in "lower case"</td></tr>
                 <tr><td><span class="border border-danger rounded">S</span></td><th>.toUpperCase()</th><td>Returns string in "UPPER CASE"</td></tr>
                 <tr><td><span class="border border-danger rounded">S</span></td><th>value.toString()</th><td>Returns value as string</td></tr>
@@ -123,7 +185,7 @@ A simple summary of JavaScript
     </div>
 </div>
 
-<div class="col-8">
+<div class="col-12">
     <div class="card mb-3" >
         <div class="card-header"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Fetch API</a></div>
         <div class="card-body">
@@ -182,15 +244,5 @@ postData('https://example.com/answer', { answer: 42 })
         </div>
     </div>
 </div>
-
-<div class="col-4">
-    <div class="card mb-3" >
-        <div class="card-header">Fetch API</div>
-        <div class="card-body">
-            <p class="card-text">Fetch supports asynchronous data transmission over HTTP</p>
-        </div>
-    </div>
-</div>
-
 
 </div>
