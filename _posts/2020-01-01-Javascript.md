@@ -142,6 +142,45 @@ A simple summary of JavaScript
 </div>
 
 <div class="col-12">
+ <div class="card mb-3" >
+        <div class="card-header">Promises</div>
+        <div class="card-body">
+            <p class="card-text">A Promise is in inbuilt JavaScript object which supports asynchronous handling of events via either a successful function or error function</p>
+            <blk data-enlighter-language="js">
+// Success callback
+function success_callback(data) {
+  ...
+}
+
+// Error callback
+function error_callback(message) {
+  ...
+}
+
+// Define the promise
+var myPromise = new Promise(function(on_success,on_error)) {
+    ... do something ...
+    if (...positive case...) {
+        on_success(...some data...);
+    } else {
+        on_error(...error message...);
+    }
+    ... perform cleanup ...
+};
+
+// Invoke the promise
+myPromise.then(
+    function(value) {success_callback(value);},
+    function(error) {error_callback(error);}
+);
+            </blk>
+            <p> A JavaScript Promise object has a State (<b>Pending, Fulfilled, or Rejected</b>) and a Result. Neither the State or the Result can be directly accessed from the Promise object, but the implementation of the Promise can assign the Result 
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
     <div class="card mb-3" >
         <div class="card-header">RESTful Architecture</div>
         <div class="card-body">
