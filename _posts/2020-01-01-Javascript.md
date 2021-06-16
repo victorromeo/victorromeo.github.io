@@ -64,7 +64,6 @@ A simple summary of JavaScript
                 <tr><th>a &lt;= b</th><td>Less than, or equal</td></tr>
                 <tr><th>a &gt; b</th><td>Greater than</td></tr>
                 <tr><th>a &gt;= b</th><td>Greater than</td></tr>
-the variable</td></tr>
                 <tr class="table-active"><td colspan="2" class="col-*">Arithmetic</td></tr>
                 <tr><th>a += b</th><td>Adds a and b, then assigns value to a</td></tr>
                 <tr><th>a -= b</th><td>Subtracts b from a, then assigns value to a</td></tr>
