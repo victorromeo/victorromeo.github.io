@@ -3,9 +3,9 @@ layout: post
 title: "ASP.Net WebForms"
 date: 2021-07-09
 tags: Microsoft web asp.net webforms
-image: https://images.unsplash.com/photo-1524230616393-d6229fcd2eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9
-thumb: https://images.unsplash.com/photo-1524230616393-d6229fcd2eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
-imagecredit: https://unsplash.com/@joshsorenson
+image: https://images.unsplash.com/photo-1535016120720-40c646be5580
+thumb: https://images.unsplash.com/photo-1535016120720-40c646be5580?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJlc2VudGF0aW9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60
+imagecredit: https://unsplash.com/@alexlitvin
 type: spec
 ---
 
@@ -113,7 +113,7 @@ The `<% %>` markup is used to indicate an inline code block, which is interprett
 
 Page markup
 
-```aspx
+```asp
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>  
   
 <!DOCTYPE html>  
@@ -182,7 +182,7 @@ public partial class _Default : System.Web.UI.Page
 
 This example describes a legacy technique of only updating part of a page, using a ScriptManager.
 
-```aspx
+```asp
 <%@ Page Language="C#" AutoEventWireup="true"
  CodeFile="Default.aspx.cs" Inherits="_Default" %>
 <%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral,
