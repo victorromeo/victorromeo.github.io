@@ -1,4 +1,15 @@
-Database Normalisation is the process of enforcing relationships between database types, to preserve hierarchy, prevent duplication and thereby strengthen database resiliency and data integrity.
+---
+layout: post
+title: "Database Normalization"
+date: 2021-07-02
+tags: database normalization
+image: https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9
+thumb: https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+imagecredit: https://unsplash.com/@markusspiske
+type: spec
+---
+
+Database Normalization is the process of enforcing relationships between database types, to preserve hierarchy, prevent duplication and thereby strengthen database resiliency and data integrity.
 
 ## [Database Normalization](https://en.wikipedia.org/wiki/Database_normalization)
 
