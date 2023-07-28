@@ -9,6 +9,137 @@ imagecredit: https://unsplash.com/@jontyson
 type: article
 ---
 
+Delivering data fast
+
+# Web Sockets
+
+WebSockets is a protocol that enables real-time, full-duplex communication between a client and a server over a single, long-lived connection. Unlike traditional HTTP requests, which are stateless and require the client to initiate a new connection for each request, WebSockets allow continuous bidirectional communication, making them ideal for real-time applications like chat systems, gaming, notifications, and collaborative tools.
+
+In C#, you can implement WebSockets using the System.Net.WebSockets namespace. Here's a simple example to demonstrate how to create a WebSocket server and a client using C#.
+
+Server
+
+```cs
+using System;
+using System.Net;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+public class WebSocketServer
+{
+    private static async Task HandleClient(WebSocket webSocket)
+    {
+        byte[] buffer = new byte[1024];
+
+        try
+        {
+            while (webSocket.State == WebSocketState.Open)
+            {
+                WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+
+                if (result.MessageType == WebSocketMessageType.Text)
+                {
+                    string receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    Console.WriteLine($"Received: {receivedMessage}");
+
+                    string responseMessage = $"Server Response: {receivedMessage}";
+                    byte[] responseBuffer = Encoding.UTF8.GetBytes(responseMessage);
+
+                    await webSocket.SendAsync(new ArraySegment<byte>(responseBuffer, 0, responseBuffer.Length),
+                        WebSocketMessageType.Text, true, CancellationToken.None);
+                }
+                else if (result.MessageType == WebSocketMessageType.Close)
+                {
+                    await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Connection closed by the server.", CancellationToken.None);
+                }
+            }
+        }
+        catch (WebSocketException ex)
+        {
+            Console.WriteLine($"WebSocket Exception: {ex.Message}");
+        }
+    }
+
+    public static async Task Main()
+    {
+        HttpListener listener = new HttpListener();
+        listener.Prefixes.Add("http://localhost:8080/");
+        listener.Start();
+
+        Console.WriteLine("WebSocket server started.");
+
+        while (true)
+        {
+            HttpListenerContext context = await listener.GetContextAsync();
+            if (context.Request.IsWebSocketRequest)
+            {
+                HttpListenerWebSocketContext webSocketContext = await context.AcceptWebSocketAsync(null);
+                WebSocket webSocket = webSocketContext.WebSocket;
+
+                _ = HandleClient(webSocket);
+            }
+            else
+            {
+                context.Response.StatusCode = 400;
+                context.Response.Close();
+            }
+        }
+    }
+}
+```
+
+Client
+
+```cs
+using System;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+public class WebSocketClient
+{
+    public static async Task Main()
+    {
+        ClientWebSocket webSocket = new ClientWebSocket();
+        Uri uri = new Uri("ws://localhost:8080");
+
+        try
+        {
+            await webSocket.ConnectAsync(uri, CancellationToken.None);
+            Console.WriteLine("Connected to WebSocket server.");
+
+            while (webSocket.State == WebSocketState.Open)
+            {
+                Console.Write("Enter a message to send to the server (or 'exit' to quit): ");
+                string message = Console.ReadLine();
+
+                if (message == "exit")
+                {
+                    await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Connection closed by the client.", CancellationToken.None);
+                    break;
+                }
+
+                byte[] buffer = Encoding.UTF8.GetBytes(message);
+                await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+
+                buffer = new byte[1024];
+                WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                string receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                Console.WriteLine($"Received from server: {receivedMessage}");
+            }
+        }
+        catch (WebSocketException ex)
+        {
+            Console.WriteLine($"WebSocket Exception: {ex.Message}");
+        }
+    }
+}
+
+```
+
 ## SignalR
 
 In a real-world scenario, you may need to scale your SignalR application to handle a large number of concurrent users across multiple servers or instances. To achieve this, you can use a backplane with SignalR to distribute messages across all connected servers. In this example, we'll use Redis as the backplane, as it's a popular and scalable choice.
