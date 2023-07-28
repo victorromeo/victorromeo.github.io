@@ -9,7 +9,7 @@ imagecredit: https://unsplash.com/@johnschno
 type: article
 ---
 
-A short summary of major pattern concepts when designing distributed computer software
+Application testing concepts
 
 - [Concepts](#concepts)
 - [Planning and Executing](#planning-and-executing)
