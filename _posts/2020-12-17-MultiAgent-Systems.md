@@ -84,3 +84,55 @@ An expert system is similar, however cannot directly interact with the environme
 - Agents may learn or not learn
   - When agents learn, agents may act differently when environments change, outcomes change, collaboration and cooperation outcomes result in outcomes which differ from expectation
   - When agents do not learn, they may exhibit sub-optimal behaviours despite historical evidence or alternatively may perform optimal behaviours despite historical evidence of suboptimal environmental conditions
+
+## Example
+
+Multi-Agent Systems (MAS) are systems composed of multiple agents that interact with each other to achieve certain goals or tasks. Each agent in the system is an autonomous entity capable of making decisions and taking actions based on its local knowledge and communication with other agents. In C#, you can create a simple example of a multi-agent system using classes to represent the agents. Here's a basic example of a MAS with two agents:
+
+```cs
+using System;
+
+// Agent class representing a basic agent in the multi-agent system
+public class Agent
+{
+    public string Name { get; }
+    
+    public Agent(string name)
+    {
+        Name = name;
+    }
+
+    // Method for an agent to send a message to another agent
+    public void SendMessage(Agent receiver, string message)
+    {
+        Console.WriteLine($"{Name} sends message: \"{message}\" to {receiver.Name}");
+        receiver.ReceiveMessage(this, message);
+    }
+
+    // Method for an agent to receive a message from another agent
+    public void ReceiveMessage(Agent sender, string message)
+    {
+        Console.WriteLine($"{Name} receives message: \"{message}\" from {sender.Name}");
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        // Create two agents
+        Agent agent1 = new Agent("Agent 1");
+        Agent agent2 = new Agent("Agent 2");
+
+        // Agent 1 sends a message to Agent 2
+        agent1.SendMessage(agent2, "Hello, Agent 2!");
+
+        // Agent 2 sends a message back to Agent 1
+        agent2.SendMessage(agent1, "Hi, Agent 1!");
+    }
+}
+```
+
+In this example, we have a simple Agent class with a Name property and methods for sending and receiving messages. The Main method in the Program class creates two agents and simulates them sending messages to each other.
+
+This example represents the most basic form of a multi-agent system, where agents can communicate with each other directly. In real-world scenarios, multi-agent systems can be much more complex, with agents having different capabilities, knowledge, and decision-making algorithms. However, this basic example illustrates the concept of agents interacting within a multi-agent system.
