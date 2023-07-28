@@ -30,6 +30,61 @@ tr:hover {
 }
 </style>
 
+## Overview
+
+Summary of the equivalent services provided by three major cloud service providers: Google Cloud Services, Amazon Web Services (AWS), and Microsoft Azure. Please note that offerings and services may have changed or expanded since then, so it's always best to refer to their official websites for the most up-to-date information.
+
+Compute Services:
+
+Google Cloud Services: Compute Engine (Virtual Machines), Kubernetes Engine (Managed Kubernetes), App Engine (Platform-as-a-Service), Cloud Functions (Serverless computing).
+AWS: Amazon EC2 (Elastic Compute Cloud), Amazon EKS (Elastic Kubernetes Service), AWS Elastic Beanstalk (Platform-as-a-Service), AWS Lambda (Serverless computing).
+Azure: Azure Virtual Machines, Azure Kubernetes Service (AKS), Azure App Service (Platform-as-a-Service), Azure Functions (Serverless computing).
+
+Storage Services:
+
+Google Cloud Services: Cloud Storage, Persistent Disk (Block storage), Cloud Filestore (Managed file storage), Cloud Storage Nearline/Coldline (Archival storage).
+AWS: Amazon S3 (Simple Storage Service), Amazon EBS (Elastic Block Store), Amazon EFS (Elastic File System), Amazon Glacier (Archival storage).
+Azure: Azure Blob Storage, Azure Managed Disks, Azure Files, Azure Archive Storage.
+
+Database Services:
+
+Google Cloud Services: Cloud SQL (Managed MySQL, PostgreSQL, and SQL Server), Cloud Firestore (NoSQL), Cloud Spanner (Horizontally-scalable relational database), Bigtable (NoSQL Big Data).
+AWS: Amazon RDS (Relational Database Service), Amazon DynamoDB (NoSQL), Amazon Redshift (Data warehouse), Amazon Neptune (Graph database).
+Azure: Azure SQL Database, Azure Cosmos DB (NoSQL), Azure Database for PostgreSQL/MySQL/MariaDB, Azure Synapse Analytics (Data warehouse).
+
+Networking Services:
+
+Google Cloud Services: Virtual Private Cloud (VPC), Cloud Load Balancing, Cloud CDN (Content Delivery Network), Cloud DNS (Domain Name System).
+AWS: Amazon VPC, Elastic Load Balancing, Amazon CloudFront (Content Delivery Network), Amazon Route 53 (Domain Name System).
+Azure: Azure Virtual Network (VNet), Azure Load Balancer, Azure Content Delivery Network, Azure DNS.
+
+AI and Machine Learning Services:
+
+Google Cloud Services: AI Platform, Cloud Machine Learning Engine, Vision AI, Natural Language API, Translation API, AutoML, etc.
+AWS: Amazon SageMaker, AWS AI/ML Services, Rekognition (Image and Video analysis), Polly (Text-to-Speech), Lex (Chatbots), etc.
+Azure: Azure Machine Learning, Azure Cognitive Services, Computer Vision, Speech Services, Language Understanding (LUIS), etc.
+
+Identity and Access Management (IAM):
+
+Google Cloud Services: Identity Platform, Cloud IAM.
+AWS: AWS Identity and Access Management (IAM).
+Azure: Azure Active Directory, Azure RBAC.
+
+Analytics and Big Data:
+
+Google Cloud Services: BigQuery (Data warehousing and analytics), Dataflow (Real-time data processing), Dataproc (Managed Hadoop/Spark), Pub/Sub (Messaging).
+AWS: Amazon EMR (Managed Hadoop/Spark), Amazon Redshift (Data warehouse), Amazon Kinesis (Real-time data streaming), Amazon SNS (Messaging).
+Azure: Azure HDInsight (Managed Hadoop/Spark), Azure Data Lake Analytics, Azure Stream Analytics, Azure Event Hubs (Event streaming).
+
+Internet of Things (IoT):
+
+Google Cloud Services: Cloud IoT Core.
+AWS: AWS IoT Core.
+Azure: Azure IoT Hub.
+Please be aware that the three providers also offer numerous other specialized services for specific use cases and industries. The above summary covers some of the core services provided by each platform. Always refer to the respective provider's official documentation for the latest and most comprehensive information on their services.
+
+## Details
+
 |                        | AWS                                                                                                                                                                    | Azure                                                                                      | GCP                                                                                        |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | **Object storage**     | Amazon Simple Storage Services (Amazon S3)                                                                                                                             | Blob Storage                                                                               | Google Cloud Storage                                                                       |
