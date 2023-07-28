@@ -140,6 +140,14 @@ public class WebSocketClient
 
 ```
 
+In this example, we have a simple WebSocket server that listens for incoming WebSocket requests using HttpListener and handles client connections and messages. The server responds to each client message with a simple echo response.
+
+The WebSocket client connects to the server using ClientWebSocket, sends messages to the server, and displays the responses received from the server.
+
+To run this example, you can create two separate console applications for the server and the client. Start the server first and then run the client. The client will connect to the server, and you can exchange messages between them.
+
+Please note that this is a basic example to demonstrate how to use WebSockets in C#. In a real-world scenario, you might want to handle disconnections, implement proper error handling, and add more features to suit your application's needs.
+
 ## SignalR
 
 In a real-world scenario, you may need to scale your SignalR application to handle a large number of concurrent users across multiple servers or instances. To achieve this, you can use a backplane with SignalR to distribute messages across all connected servers. In this example, we'll use Redis as the backplane, as it's a popular and scalable choice.
