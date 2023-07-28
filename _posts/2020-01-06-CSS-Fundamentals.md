@@ -195,3 +195,71 @@ p {
 | property | description |
 | -------: | ----------- |
 |   cursor |
+
+## Summary
+
+Here's a summary of the CSS3 Cheat Sheet, which covers some of the most commonly used CSS3 properties and their syntax:
+
+Selectors:
+
+Universal selector: `*`
+Type selector: `element`
+Class selector: `.classname`
+ID selector: `#id`
+Descendant selector: `element element`
+Child selector: `element > element`
+Attribute selector: `[attribute=value]`
+Pseudo-class selector: `:pseudo-class`
+
+Box Model:
+
+`width`: Sets the width of an element.
+`height`: Sets the height of an element.
+`margin`: Sets the outer margin of an element.
+`padding`: Sets the inner padding of an element.
+`border`: Sets the border properties of an element.
+`box-sizing`: Defines how the width and height of an element are calculated.
+
+Positioning:
+
+`position`: Specifies the positioning method (static, relative, absolute, fixed).
+`top`, `right`, `bottom`, `left`: Specifies the offset of a positioned element.
+`z-index`: Specifies the stacking order of positioned elements.
+
+Typography:
+
+`font-family`: Sets the font family for text.
+`font-size`: Sets the font size.
+`font-weight`: Sets the font weight (bold, normal).
+`font-style`: Sets the font style (italic, normal).
+`text-align`: Aligns text (left, right, center, justify).
+`text-decoration`: Sets text decorations (underline, line-through).
+
+Colors and Backgrounds:
+
+`color`: Sets the text color.
+`background-color`: Sets the background color.
+`background-image`: Sets the background image.
+`background-size`: Defines how the background image is sized.
+`background-position`: Sets the starting position of the background image.
+
+Display and Layout:
+
+`display`: Specifies the display type of an element (block, inline, inline-block).
+`float`: Allows an element to be floated to the left or right.
+`clear`: Specifies which sides of an element other floating elements are not allowed.
+`overflow`: Defines how content that overflows an element is handled.
+`flexbox`: A flexible box layout model to create responsive layouts.
+`grid`: A grid layout model to create grid-based layouts.
+
+Transitions and Animations:
+
+`transition`: Specifies transition properties (property, duration, timing function).
+`transform`: Applies transformations (translate, rotate, scale, etc.) to elements.
+`animation`: Specifies animations (name, duration, timing function, etc.).
+
+Media Queries:
+
+`@media`: Defines styles for specific device characteristics or screen sizes.
+
+These are just some of the key properties and concepts in CSS3. CSS3 offers many more features and options for styling and layout, allowing developers to create visually appealing and responsive web pages.
