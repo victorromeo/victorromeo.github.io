@@ -6,10 +6,10 @@ $body-font-size: 14px;
 
 $comparator-token-color: blue;
 $parenthesis-token-color: gray;
-$keyword-token-color: purple;
-$string-token-color: green;
-$comment-token-color: lightgreen;
-$named-token-color: red;
+$keyword-token-color: rgb(0, 109, 204);
+$string-token-color: rgb(219, 113, 0);
+$comment-token-color: rgb(0, 120, 0);
+$named-token-color: rgb(0, 10, 88);
 $highlight-color: LightGoldenrodYellow;
 
 h1, h2, h3, h4, h5, h6 {

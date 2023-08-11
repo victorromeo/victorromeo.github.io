@@ -38,30 +38,30 @@ Database normalization is a process in database design that involves organizing 
 
 The process of normalization typically involves dividing a large table into multiple smaller tables and establishing relationships between them using keys. The most widely used normal forms are:
 
-First Normal Form (1NF):
+### First Normal Form (1NF):
 
 Each table cell should contain a single value, avoiding multivalued attributes or repeating groups.
 Each column should have a unique name.
 Each row should be uniquely identifiable using a primary key.
 
-Second Normal Form (2NF):
+### Second Normal Form (2NF):
 
 The table must already be in 1NF.
 All non-key attributes should be fully dependent on the entire primary key, not just part of it.
 If a table has a composite primary key (made up of multiple columns), each non-key attribute should be related to all parts of the composite key.
 
-Third Normal Form (3NF):
+### Third Normal Form (3NF):
 
 The table must already be in 2NF.
 There should be no transitive dependencies, meaning that non-key attributes should not depend on other non-key attributes.
 Any non-key attribute should only depend on the primary key of the table.
 
-Boyce-Codd Normal Form (BCNF):
+### Boyce-Codd Normal Form (BCNF):
 
 The table must already be in 3NF.
 A stronger version of the 3NF, where every determinant (a set of attributes that uniquely determines other attributes) is a candidate key.
 
-Fourth Normal Form (4NF):
+### Fourth Normal Form (4NF):
 
 The table must already be in BCNF.
 It addresses multi-valued dependencies, ensuring that there are no repeating groups in the table.

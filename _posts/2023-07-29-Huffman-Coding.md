@@ -33,7 +33,7 @@ Huffman coding is widely used in various compression algorithms and applications
 
 ## Example
 
-Implementing a complete and efficient Huffman encoding and decoding system from scratch can be quite involved. However, I'll provide you with a simplified C# example of Huffman encoding to give you an idea of how it works. This example will cover the basic concepts, but keep in mind that for real-world use, you may need to optimize and handle more edge cases.
+Implementing a complete and efficient Huffman encoding and decoding system from scratch can be quite involved. Here's a simplified C# example of Huffman encoding to give you an idea of how it works. This example will cover the basic concepts, but keep in mind that for real-world use, you may need to optimize and handle more edge cases.
 
 In this example, we'll focus on encoding a string and decoding it back to demonstrate the Huffman encoding process.
 

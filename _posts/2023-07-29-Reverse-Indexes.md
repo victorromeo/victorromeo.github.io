@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Huffman coding"
+title: "Reverse Indexes"
 date: 2023-07-29
 tags: Concept
 image: https://images.unsplash.com/photo-1511721285502-9f81e79be874

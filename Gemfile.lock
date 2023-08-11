@@ -67,10 +67,11 @@ GEM
 PLATFORMS
   ruby
   x64-mingw32
+  x86_64-linux-musl
 
 DEPENDENCIES
   jekyll (~> 4.0)
   katex (~> 0.6.0)
 
 BUNDLED WITH
-   2.1.2
+   2.2.2

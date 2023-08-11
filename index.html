@@ -12,7 +12,7 @@ img.card-img-top {
 </style>
 
 <div class="card-columns">
-{% assign sorted = (site.posts | sort: 'title') %}
+{% assign sorted = site.posts | sort: 'title' %}
 {% for post in sorted %}
 {% assign tags = post.tags | split: ", " %}
 

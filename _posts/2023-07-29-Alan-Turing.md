@@ -2,10 +2,10 @@
 layout: post
 title: "Alan Turing"
 date: 2023-07-29
-tags: Concept
-image: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Turing_in_1935.jpg/220px-Turing_in_1935.jpg
-thumb: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Turing_in_1935.jpg/220px-Turing_in_1935.jpg
-imagecredit: https://en.wikipedia.org/wiki/Alan_Turing#/media/File:Turing_in_1935.jpg
+tags: Bio
+image: https://cdn.britannica.com/81/191581-050-8C0A8CD3/Alan-Turing.jpg
+thumb: https://cdn.britannica.com/81/191581-050-8C0A8CD3/Alan-Turing.jpg
+imagecredit: https://www.britannica.com/biography/Alan-Turing
 type: article
 ---
 

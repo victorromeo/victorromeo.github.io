@@ -72,25 +72,31 @@ In summary, Multi-Paxos is like Paxos, but with the added concept of a Leader wh
 
 ## High Watermark Pattern
 
-Step 1: Initialization
+*Step* 1: Initialization
 
 Each distributed system or computer starts with a value of zero as the "high-watermark" or the highest value seen so far.
-Step 2: Receiving Values
+
+*Step* 2: Receiving Values
 
 Each system can receive different values from various sources (like sensors, other systems, or users).
-Step 3: Checking for a New High
+
+*Step* 3: Checking for a New High
 
 Whenever a system receives a new value, it compares it with its current high-watermark value.
-Step 4: Updating the High-Watermark
+
+*Step* 4: Updating the High-Watermark
 
 If the new value is higher than the current high-watermark, the system updates its high-watermark value to this new higher value.
-Step 5: Sharing the High-Watermark
+
+*Step* 5: Sharing the High-Watermark
 
 After updating its high-watermark value, the system informs other connected systems about the new value so that they can also update their high-watermark accordingly.
-Step 6: Periodic Updates
+
+*Step* 6: Periodic Updates
 
 The process of receiving values, comparing, updating, and sharing high-watermarks keeps repeating over time as new values arrive or change.
-Step 7: Knowing the Highest Value
+
+*Step* 7: Knowing the Highest Value
 
 Eventually, all systems in the distributed architecture will have the same high-watermark value, which will be the highest among all the values they have seen
 
@@ -185,31 +191,39 @@ Please note that this example is simplified and does not cover all aspects of a 
 
 In distributed software architecture, a quorum is a mechanism used to make decisions or perform operations when there are multiple copies of data or services distributed across different nodes or servers. The quorum ensures that a sufficient number of nodes must agree or acknowledge a request before it is considered successful. This helps to maintain data consistency and avoid conflicts. Let's go through the steps involved in a quorum-based system:
 
-Step 1: Defining the Quorum Size
+*Step* 1: Defining the Quorum Size
 
 In a quorum-based system, a fixed number of nodes are designated to form a quorum. This number is determined based on the total number of nodes in the system and the level of fault tolerance required.
-Step 2: Receiving a Request
+
+*Step* 2: Receiving a Request
 
 When a node receives a request to perform an operation or change data, it checks if it can process the request independently or if it needs the agreement of other nodes in the quorum.
-Step 3: Initiating the Quorum Process
+
+*Step* 3: Initiating the Quorum Process
 
 If the operation requires a quorum, the node contacts the other nodes in the quorum to seek their participation.
-Step 4: Waiting for Responses
+
+*Step* 4: Waiting for Responses
 
 Each node contacted by the initiator now decides whether to vote in favor of the operation or against it. This voting can be based on various conditions, depending on the application and requirements.
-Step 5: Achieving Quorum
+
+*Step* 5: Achieving Quorum
 
 The initiator waits until it receives responses from a sufficient number of nodes to reach the quorum size. For example, if the quorum size is set to 3, it needs at least 3 favorable votes to proceed.
-Step 6: Decision Making
+
+*Step* 6: Decision Making
 
 Once the quorum is achieved (e.g., receiving 3 favorable votes), the initiator determines the outcome of the request based on the votes received.
-Step 7: Performing the Operation
+
+*Step* 7: Performing the Operation
 
 If the quorum reached a consensus in favor of the request, the operation is carried out. For instance, if it was a data update request, the data will be changed accordingly on all the nodes in the quorum to maintain consistency.
-Step 8: Informing Other Nodes
+
+*Step* 8: Informing Other Nodes
 
 After the operation is completed, the initiator node notifies other nodes in the system about the outcome. This ensures that all nodes are aware of the changes made and can update their local copies accordingly.
-Step 9: Handling Failures
+
+*Step* 9: Handling Failures
 
 Quorum systems are designed to handle failures gracefully. If a node is unresponsive or unable to participate, the remaining nodes can still reach a quorum and continue processing requests.
 By using a quorum-based approach, distributed systems can ensure that decisions are made with the agreement of a sufficient number of nodes, which helps in maintaining data consistency and fault tolerance in the face of failures or network partitions.
@@ -328,43 +342,54 @@ Please note that this example is simplified and does not cover all aspects of a 
 
 The Leader-Follower pattern is a popular design pattern in distributed software systems that helps improve efficiency and manageability. In this pattern, multiple nodes or servers work together, with one designated as the "Leader" and the rest as "Followers." Let's go through the steps of the Leader-Follower pattern, including the Leader election process:
 
-Step 1: Node Initialization
+*Step* 1: Node Initialization
 
 Initially, all nodes start as potential candidates to become the Leader.
-Step 2: Leader Election
+
+*Step* 2: Leader Election
 
 The Leader election process begins, where the nodes compete to become the Leader.
 Each node tries to demonstrate its eligibility to become the Leader based on certain criteria, such as performance, availability, or a predefined priority.
-Step 3: Selecting the Leader
+
+*Step* 3: Selecting the Leader
 
 The node that fulfills the criteria most effectively and efficiently is chosen as the Leader.
 Once elected, this node becomes responsible for managing and coordinating the actions of the entire group.
-Step 4: Followers' Role
+
+*Step* 4: Followers' Role
 
 The remaining nodes become the Followers and take on a different role from the Leader.
 The Followers are responsible for executing tasks assigned by the Leader and responding to its requests.
-Step 5: Request Handling
+
+*Step* 5: Request Handling
 
 When a request comes into the distributed system, it is received by the Leader node.
-Step 6: Leader Processing
+
+*Step* 6: Leader Processing
 
 The Leader processes the request, makes decisions, and can initiate further actions.
-Step 7: Delegating Tasks
+
+*Step* 7: Delegating Tasks
 
 In some cases, the Leader might delegate certain tasks to Followers to distribute the workload and improve scalability.
-Step 8: Follower Actions
+
+*Step* 8: Follower Actions
 
 Followers execute the delegated tasks and provide the results back to the Leader.
-Step 9: Communication with Followers
+
+*Step* 9: Communication with Followers
 
 The Leader keeps communication channels open with the Followers, ensuring that they are up-to-date with the latest information and instructions.
-Step 10: Monitoring the Leader
+
+*Step* 10: Monitoring the Leader
 
 The Followers continuously monitor the Leader's health and status to ensure it is functioning correctly.
-Step 11: Failure Handling
+
+*Step* 11: Failure Handling
 
 If the Leader node fails or becomes unresponsive, the Leader election process is triggered again to select a new Leader from the remaining eligible nodes.
-Step 12: Continuous Operation
+
+*Step* 12: Continuous Operation
 
 The Leader-Follower pattern allows for continuous operation and fault tolerance, as the system can quickly recover by electing a new Leader if the current one fails.
 By following the Leader-Follower pattern and implementing an effective Leader election process, distributed systems can achieve better performance, scalability, and resilience to failures. The Leader node takes charge of managing the system, while the Followers provide support and share the workload, creating a well-organized and efficient distributed software architecture.
@@ -507,31 +532,37 @@ Please note that this example is simplified for educational purposes. In a real-
 
 The Write-Ahead Log (WAL) pattern is a technique used in database management systems and other systems to ensure data durability and reliability. It involves writing changes to a log before actually modifying the data itself. Let's go through the steps of the Write-Ahead Log pattern in easy language:
 
-Step 1: Receive a Data Modification Request
+*Step* 1: Receive a Data Modification Request
 
 When a system receives a request to modify data (e.g., insert, update, or delete a record), it doesn't immediately make the changes to the actual data.
-Step 2: Writing to the Log
+
+*Step* 2: Writing to the Log
 
 Instead, the system first writes the details of the data modification to a special log file known as the Write-Ahead Log or WAL.
 The log entry contains all the necessary information to reproduce the data modification, including the type of operation, the data being modified, and any relevant metadata.
-Step 3: Log Entry Persistence
+*Step* 3: Log Entry Persistence
 
 It is essential to ensure that the log entry is safely stored in stable storage (e.g., a reliable disk or storage medium) before proceeding with the actual data modification.
 Writing to stable storage helps prevent data loss in case of system crashes or failures.
-Step 4: Data Modification
+
+*Step* 4: Data Modification
 
 After the log entry is safely stored in the WAL, the system can proceed to make the actual changes to the data.
-Step 5: Confirming Data Modification
+
+*Step* 5: Confirming Data Modification
 
 Once the data modification is successfully completed, the system acknowledges the operation as complete.
-Step 6: Log Entry Removal
+
+*Step* 6: Log Entry Removal
 
 At this point, the system can choose to remove the log entry from the WAL since the data modification has been successfully applied to the data.
-Step 7: Recovery from Failures
+
+*Step* 7: Recovery from Failures
 
 In the event of a system crash or failure after a data modification request but before the data could be written to stable storage, the system can recover by checking the WAL upon restarting.
+
 The system replays the logged modifications from the WAL to bring the data back to the state it was before the crash.
-Step 8: Ensuring Durability and Consistency
+*Step* 8: Ensuring Durability and Consistency
 
 By using the Write-Ahead Log pattern, the system achieves data durability, ensuring that no committed changes are lost even in the face of failures.
 The pattern also helps maintain data consistency, as modifications are written to the log before being applied to the actual data.
@@ -710,31 +741,38 @@ Overall, using Segmented Logs in distributed software architecture offers severa
 
 The Lease Pattern is a technique used in distributed software systems to manage shared resources and prevent conflicts when multiple nodes need access to the same resource. It involves granting a lease, which is a time-limited permission, to one node at a time. Let's go through the steps of the Lease Pattern in easy language:
 
-Step 1: Requesting Access to a Resource
+*Step* 1: Requesting Access to a Resource
 
 When a node needs access to a shared resource, it sends a request to the Lease Manager, which is responsible for managing the leases for that resource.
-Step 2: Lease Manager Checks Availability
+
+*Step* 2: Lease Manager Checks Availability
 
 The Lease Manager checks if the resource is currently leased to any other node and whether the lease is still active (not expired).
-Step 3: Granting the Lease
+
+*Step* 3: Granting the Lease
 
 If the resource is available, and there is no active lease, the Lease Manager grants a lease to the requesting node.
 The lease includes a lease duration, specifying how long the node can hold the resource exclusively.
-Step 4: Accessing the Resource
+
+*Step* 4: Accessing the Resource
 
 With the lease granted, the requesting node can now access and use the shared resource exclusively for the lease duration.
-Step 5: Lease Renewal (Optional)
+
+*Step* 5: Lease Renewal (Optional)
 
 If the node needs to continue using the resource beyond the initial lease duration, it can request a lease renewal from the Lease Manager before the current lease expires.
 The Lease Manager may extend the lease if the resource is not requested by another node.
-Step 6: Releasing the Lease
+
+*Step* 6: Releasing the Lease
 
 Once the node completes its work with the shared resource or when the lease duration ends, it releases the lease.
 Releasing the lease allows other nodes to acquire the resource in the future.
-Step 7: Handling Lease Expiration
+
+*Step* 7: Handling Lease Expiration
 
 If a node fails to renew or release the lease within the lease duration, the Lease Manager automatically revokes the lease, making the resource available for other nodes to use.
-Step 8: Lease Conflict Handling
+
+*Step* 8: Lease Conflict Handling
 
 If multiple nodes request the same resource simultaneously, the Lease Manager can use strategies like time-based priority or random selection to grant the lease to one of them.
 By granting the lease to one node, the Lease Pattern avoids conflicts and ensures that only one node has exclusive access to the resource at any given time.
@@ -867,35 +905,35 @@ The output will show the sequence of events as the nodes request and release the
 
  The Generation Clock Pattern is a technique used in distributed systems to track the order of events or changes across multiple nodes. It helps in achieving consistency and handling concurrent operations in a systematic way. Let's go through the steps of the Generation Clock Pattern in easy language:
 
-Step 1: Initialization
+*Step* 1: Initialization
 
 Each node in the distributed system starts with an initial value of the generation clock set to zero.
-Step 2: Event Occurrence
+*Step* 2: Event Occurrence
 
 Whenever an event or a change occurs on a node, that node increments its generation clock value.
-Step 3: Propagating the Generation Clock
+*Step* 3: Propagating the Generation Clock
 
 When a node communicates with other nodes, it includes its current generation clock value in the messages it sends.
-Step 4: Receiving Messages
+*Step* 4: Receiving Messages
 
 When a node receives a message from another node, it compares the received generation clock value with its own generation clock value.
-Step 5: Updating the Generation Clock
+*Step* 5: Updating the Generation Clock
 
 If the received generation clock value is greater than the node's own generation clock value, the node updates its generation clock to the received value plus one.
 This ensures that the node's generation clock always stays ahead to reflect the latest events or changes.
-Step 6: Event Ordering
+*Step* 6: Event Ordering
 
 By tracking the generation clock, the distributed system can now determine the order in which events or changes occurred across nodes.
 Events with lower generation clock values happened before events with higher generation clock values.
-Step 7: Handling Concurrent Operations
+*Step* 7: Handling Concurrent Operations
 
 When multiple nodes have concurrent operations, their generation clock values help in determining the order in which these operations should be applied to achieve consistency.
 For example, when updating a shared resource, the node with the lowest generation clock value gets its changes applied first.
-Step 8: Ensuring Consistency
+*Step* 8: Ensuring Consistency
 
 The Generation Clock Pattern helps in maintaining a consistent view of events across the distributed system.
 Nodes can agree on the order of events and synchronize their states based on the generation clock values.
-Step 9: Managing Clock Drift
+*Step* 9: Managing Clock Drift
 
 The distributed system must account for clock drift or time discrepancies between nodes, which could affect the accuracy of the generation clock.
 Techniques like clock synchronization protocols or using logical clocks can help address clock drift issues.
